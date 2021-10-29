@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import FMPFooter from "./home/FMPFooter";
+import FMPNavbar from "./home/FMPNavbar";
+import FMPHeader from "./home/FMPHeader";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid="true" className="App">
+      <FMPNavbar />
+      <FMPFooter />
+      <FMPHeader />
+    </Container>
   );
 }
 
