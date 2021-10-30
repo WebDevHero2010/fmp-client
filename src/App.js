@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import FMPFooter from "./home/FMPFooter";
 import FMPNavbar from "./home/FMPNavbar";
+import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
 import Auth from "./auth/Auth";
 import "./App.css";
 
@@ -27,16 +28,16 @@ function App() {
 
   const protectedViews = () => {
     return sessionToken === localStorage.getItem("token") ? (
-      <WorkoutIndex token={sessionToken} />
+      <AdminDashIndex token={sessionToken} />
     ) : (
       <Auth updateToken={updateToken} />
     );
   };
+
   return (
     <Container fluid="true" className="App">
-      <FMPNavbar />
-      {/* <FMPFooter /> */}
-      <Auth />
+      <FMPNavbar clickLogout={clearToken} />
+      {protectedViews()}
     </Container>
   );
 }

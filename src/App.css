@@ -25,6 +25,14 @@
   justify-content: space-between;
 }
 
+.submitBTN {
+  background-color: #c06b43 !important;
+}
+
+.signupBTN {
+  background-color: #1f222c !important;
+}
+
 .LoginHeader {
   display: flex;
   justify-content: center;

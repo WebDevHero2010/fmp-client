@@ -43,7 +43,7 @@ const FMPNavbar = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Username</NavbarText>
+          <NavbarText>Logout</NavbarText>
         </Collapse>
       </Navbar>
     </div>
