@@ -1,0 +1,39 @@
+/* change navbar to match county website color */
+.ColorTarget {
+  background-color: #3f4352 !important;
+}
+
+.ColorTarget2 {
+  background-color: #c06b43 !important;
+}
+/* css for login box */
+.LoginApp {
+  border: 2px solid #d3d3d3;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 1em;
+  text-align: left;
+  max-width: 600px;
+}
+
+/* css styling for login button to space out submit and signup button*/
+.LoginButtonSec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.LoginHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  padding: 1em;
+}
+
+label {
+  font-weight: 600;
+}
