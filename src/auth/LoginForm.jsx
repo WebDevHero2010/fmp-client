@@ -35,7 +35,6 @@ const LoginForm = (props) => {
   };
 
   let handleLogin = (event) => {
-    // event.preventDefault();
     fetch(`http://localhost:3000/user/login`, {
       method: "POST",
       body: JSON.stringify({

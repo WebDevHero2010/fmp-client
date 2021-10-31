@@ -17,17 +17,21 @@ import {
 const SignupModal = (props) => {
   const [suerrorMSG, suSeterrorMSG] = useState("");
 
-  //Formik Setup
   const formik = useFormik({
     initialValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       role: "user",
       password: "",
       passwordConfirmation: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string()
+      firstName: Yup.string()
+        .min(4, "Must be more than 4 characters")
+        .max(15, "Must be 15 characters or less")
+        .required("Required"),
+      lastName: Yup.string()
         .min(4, "Must be more than 4 characters")
         .max(15, "Must be 15 characters or less")
         .required("Required"),
@@ -57,15 +61,15 @@ const SignupModal = (props) => {
   const [visible, setVisible] = useState(false);
 
   let handleSignUp = (values) => {
-    // event.preventDefault();
     fetch(`http://localhost:3000/user/signup`, {
       method: "POST",
       body: JSON.stringify({
         user: {
           email: formik.values.email,
-          role: formik.values.role,
+          firstName: formik.values.firstName,
+          lastName: formik.values.lastName,
           password: formik.values.password,
-          name: formik.values.name,
+          role: formik.values.role,
         },
       }),
       headers: new Headers({
@@ -74,7 +78,7 @@ const SignupModal = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.message === "User successfully created") {
+        if (data.message === "User successfully created & added to DB") {
           props.updateToken(data.sessionToken);
           console.log("User successfully created");
         } else {
@@ -95,17 +99,30 @@ const SignupModal = (props) => {
       <ModalBody>
         <Form onSubmit={formik.handleSubmit} className="signup">
           <FormGroup>
-            <Label htmlFor="name">Full Name:</Label>
+            <Label htmlFor="firstName">First Name:</Label>
             <Input
               type="text"
-              // onChange={(e) => setName(e.target.value)}
               onChange={formik.handleChange}
-              name="name"
-              value={formik.values.name}
+              name="firstName"
+              value={formik.values.firstName}
             />
             <p style={{ color: "red" }}>
-              {formik.touched.name && formik.errors.name ? (
-                <div>{formik.errors.name}</div>
+              {formik.touched.firstName && formik.errors.firstName ? (
+                <div>{formik.errors.firstName}</div>
+              ) : null}
+            </p>
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="lastName">Last Name:</Label>
+            <Input
+              type="text"
+              onChange={formik.handleChange}
+              name="lastName"
+              value={formik.values.lastName}
+            />
+            <p style={{ color: "red" }}>
+              {formik.touched.lastName && formik.errors.lastName ? (
+                <div>{formik.errors.lastName}</div>
               ) : null}
             </p>
           </FormGroup>
@@ -113,7 +130,6 @@ const SignupModal = (props) => {
             <Label htmlFor="email">Email:</Label>
             <Input
               onChange={formik.handleChange}
-              // onChange={(e) => setEmail(e.target.value)}
               name="email"
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -132,7 +148,10 @@ const SignupModal = (props) => {
               type="select"
               onBlur={formik.handleBlur}
               value={formik.values.role}
-            />
+            >
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </Input>
             <p style={{ color: "red" }}>
               {formik.touched.role && formik.errors.role ? (
                 <div>{formik.errors.role}</div>
