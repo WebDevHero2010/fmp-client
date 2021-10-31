@@ -24,6 +24,12 @@ body {
   max-width: 600px;
 }
 
+.adminDashH1 {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
 /* css styling for login button to space out submit and signup button*/
 .LoginButtonSec {
   display: flex;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
+import SignupModal from "./SignupModal";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "../App.css";
@@ -96,7 +97,11 @@ const LoginForm = (props) => {
         </FormGroup>
         <div className="LoginButtonSec">
           <Button className="submitBTN">Submit</Button>
-          <Button className="signupBTN" color="link">
+          <Button
+            className="signupBTN"
+            color="link"
+            onClick={props.signupModalON}
+          >
             Click here to signup
           </Button>
         </div>
