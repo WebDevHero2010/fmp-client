@@ -193,10 +193,14 @@ const SignupModal = (props) => {
             <br></br>
             <br></br>
             <div className="d-flex justify-content-between">
-              <Button className="btn-pdf" type="submit">
+              <Button className="submitBTN" type="submit">
                 Submit
               </Button>
-              <Button color="danger" onClick={props.signupModalOFF}>
+              <Button
+                className="signupBTN"
+                color="link"
+                onClick={props.signupModalOFF}
+              >
                 Exit
               </Button>
             </div>
