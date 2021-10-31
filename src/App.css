@@ -2,6 +2,10 @@ body {
   background-color: #1f222c;
 }
 
+.userNameText {
+  color: white !important;
+  margin-right: 10px;
+}
 /* change navbar to match county website color */
 .ColorTarget {
   background-color: #3f4352 !important;
@@ -10,6 +14,12 @@ body {
 .ColorTarget2 {
   background-color: #c06b43 !important;
 }
+
+.navbarSpace {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* css for login box */
 .LoginApp {
   background-color: white;

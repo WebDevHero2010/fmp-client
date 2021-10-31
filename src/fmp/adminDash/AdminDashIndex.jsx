@@ -9,6 +9,7 @@ class AdminDashIndex extends Component {
   render() {
     return (
       <Container>
+        <br />
         <h1 className="adminDashH1">Administrator Dashboard</h1>
       </Container>
     );

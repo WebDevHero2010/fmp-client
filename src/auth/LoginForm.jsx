@@ -105,7 +105,7 @@ const LoginForm = (props) => {
         <div className="LoginButtonSec">
           <Button className="submitBTN">Submit</Button>
           <Button className="signupBTN" color="link" onClick={signupModalON}>
-            Click here to signup
+            Click here to signup!
           </Button>
         </div>
         <Alert color="danger" isOpen={visible}>
