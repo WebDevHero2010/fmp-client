@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FMPNavbar from "./home/FMPNavbar";
 import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
+import InspectionPublic from "./home/InspectionPublic";
 import Auth from "./auth/Auth";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -34,10 +36,13 @@ function App() {
   };
 
   return (
-    <Container fluid="true" className="App">
-      <FMPNavbar clickLogout={clearToken} />
-      {protectedViews()}
-    </Container>
+    <Router>
+      <Container fluid="true" className="App">
+        <FMPNavbar clickLogout={clearToken} />
+        {protectedViews()}
+        <Route path="/public" exact component={InspectionPublic} />
+      </Container>
+    </Router>
   );
 }
 

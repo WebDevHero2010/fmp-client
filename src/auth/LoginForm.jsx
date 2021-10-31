@@ -25,6 +25,14 @@ const LoginForm = (props) => {
 
   //for Error Message Alert Element
   const [visible, setVisible] = useState(false);
+  const [signupModalActive, setsignupModalActive] = useState(false);
+  const signupModalON = () => {
+    setsignupModalActive(true);
+  };
+
+  const signupModalOFF = () => {
+    setsignupModalActive(false);
+  };
 
   let handleLogin = (event) => {
     // event.preventDefault();
@@ -97,11 +105,7 @@ const LoginForm = (props) => {
         </FormGroup>
         <div className="LoginButtonSec">
           <Button className="submitBTN">Submit</Button>
-          <Button
-            className="signupBTN"
-            color="link"
-            onClick={props.signupModalON}
-          >
+          <Button className="signupBTN" color="link" onClick={signupModalON}>
             Click here to signup
           </Button>
         </div>
@@ -109,6 +113,14 @@ const LoginForm = (props) => {
           {errorMsg}
         </Alert>
       </Form>
+      {signupModalActive ? (
+        <SignupModal
+          signupModalOFF={signupModalOFF}
+          updateToken={props.updateToken}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
