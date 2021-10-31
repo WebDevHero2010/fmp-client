@@ -129,6 +129,7 @@ const SignupModal = (props) => {
             <Input
               onChange={formik.handleChange}
               name="role"
+              type="select"
               onBlur={formik.handleBlur}
               value={formik.values.role}
             />

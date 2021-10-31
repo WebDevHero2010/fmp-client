@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FMPNavbar from "./home/FMPNavbar";
 import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
-import InspectionPublic from "./home/InspectionPublic";
+import InspectionPublic from "./public/InspectionPublic";
 import Auth from "./auth/Auth";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
