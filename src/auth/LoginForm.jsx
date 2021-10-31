@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "../App.css";
@@ -70,6 +70,11 @@ const LoginForm = (props) => {
             value={formik.values.email}
             placeholder="email@email.com"
           />
+          <p style={{ color: "red" }}>
+            {formik.touched.email && formik.errors.email ? (
+              <div>{formik.errors.email}</div>
+            ) : null}
+          </p>
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">Password</Label>
@@ -83,6 +88,11 @@ const LoginForm = (props) => {
             value={formik.values.password}
             placeholder="********"
           />
+          <p style={{ color: "red" }}>
+            {formik.touched.password && formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
+          </p>
         </FormGroup>
         <div className="LoginButtonSec">
           <Button className="submitBTN">Submit</Button>
@@ -90,6 +100,9 @@ const LoginForm = (props) => {
             Click here to signup
           </Button>
         </div>
+        <Alert color="danger" isOpen={visible}>
+          {errorMsg}
+        </Alert>
       </Form>
     </div>
   );
