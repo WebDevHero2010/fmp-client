@@ -1,7 +1,6 @@
 import { Container } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import FMPFooter from "./home/FMPFooter";
 import FMPNavbar from "./home/FMPNavbar";
 import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
 import Auth from "./auth/Auth";

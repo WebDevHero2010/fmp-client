@@ -28,7 +28,9 @@ class LoginForm extends Component {
           </FormGroup>
           <div className="LoginButtonSec">
             <Button className="submitBTN">Submit</Button>
-            <Button className="signupBTN">Click here to signup</Button>
+            <Button className="signupBTN" color="link">
+              Click here to signup
+            </Button>
           </div>
         </Form>
       </div>
