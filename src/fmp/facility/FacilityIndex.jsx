@@ -6,7 +6,11 @@ class FacilityIndex extends Component {
     this.state = {};
   }
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <h1 className="adminDashH1">FacilityIndexPageWorking</h1>
+      </div>
+    );
   }
 }
 

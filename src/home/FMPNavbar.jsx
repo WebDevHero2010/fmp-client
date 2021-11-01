@@ -12,40 +12,23 @@ import {
   // DropdownItem,
   // Link
 } from "reactstrap";
-import Auth from "../auth/Auth";
+// import Auth from "../auth/Auth";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const FMPNavbar = (props) => {
-  const loginSignupHide = () => {
+  const loginOptionToggle = () => {
     return props.sessionToken === localStorage.getItem("token") ? (
-      <Button className="btn-navbar" color="black" onClick={props.clickLogout}>
-        Logout
-      </Button>
+      <div>
+        <NavbarText className="userNameText">Hello, Username</NavbarText>
+        <Button className="submitBTN" onClick={props.clickLogout}>
+          Logout
+        </Button>
+      </div>
     ) : (
-      <Auth updateToken={props.updateToken} />
+      ""
     );
   };
-
-  // const resourceViews = () => {
-  //   return props.sessionToken === localStorage.getItem("token") ? (
-  //     <UncontrolledDropdown>
-  //       <DropdownToggle caret className="btn-navbar" color="black">
-  //         Resources
-  //       </DropdownToggle>
-  //       <DropdownMenu>
-  //         <DropdownItem>
-  //           <Link className='btn-dropdown' to="/hotels"> Hotels in your area </Link>
-  //         </DropdownItem>
-  //         <DropdownItem>
-  //           <Link className='btn-dropdown' to="/petcare">Pet Boarding in your area </Link>
-  //         </DropdownItem>
-  //       </DropdownMenu>
-  //     </UncontrolledDropdown>
-  //   ) : (
-  //     ""
-  //   );
-  // };
 
   return (
     <div>
@@ -53,12 +36,7 @@ const FMPNavbar = (props) => {
         <NavbarBrand href="/">Food Manager Pro</NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Nav>
-          <Collapse navbar>
-            <NavbarText className="userNameText">Hello, username</NavbarText>
-            <Button className="submitBTN" onClick={props.clickLogout}>
-              Logout
-            </Button>
-          </Collapse>
+          <Collapse navbar>{loginOptionToggle()}</Collapse>
         </Nav>
       </Navbar>
     </div>

@@ -2,11 +2,12 @@ import { Container } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FMPNavbar from "./home/FMPNavbar";
-import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
-import InspectionPublic from "./public/InspectionPublic";
+// import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
+// import InspectionPublic from "./public/InspectionPublic";
 import Auth from "./auth/Auth";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
+import FacilityIndex from "./fmp/facility/FacilityIndex";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
@@ -29,20 +30,23 @@ function App() {
 
   const protectedViews = () => {
     return sessionToken === localStorage.getItem("token") ? (
-      <AdminDashIndex token={sessionToken} />
+      <FacilityIndex token={sessionToken} />
     ) : (
       <Auth updateToken={updateToken} />
     );
   };
 
   return (
-    <Router>
-      <Container fluid="true" className="App">
-        <FMPNavbar clickLogout={clearToken} />
+    <Container fluid="true" className="App">
+      <Router>
+        <FMPNavbar
+          clickLogout={clearToken}
+          updateToken={updateToken}
+          sessionToken={sessionToken}
+        />
         {protectedViews()}
-        <Route path="/public" exact component={InspectionPublic} />
-      </Container>
-    </Router>
+      </Router>
+    </Container>
   );
 }
 
