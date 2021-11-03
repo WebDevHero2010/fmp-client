@@ -77,6 +77,7 @@ const FacilityTable = (props) => {
         <thead>
           <tr className="font-table">
             <th>Facility#</th>
+            <th>Facility Name:</th>
             <th>Address</th>
             <th>State</th>
             <th>Zipcode</th>
