@@ -54,7 +54,7 @@ const FacilityIndex = (props) => {
         </Col>
         {editActive ? (
           <FacilityEdit
-            facility={facilityToEdit}
+            facilityToEdit={facilityToEdit}
             editOff={editOff}
             token={props.token}
             fetchFacility={fetchFacility}
