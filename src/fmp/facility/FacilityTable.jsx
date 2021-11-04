@@ -64,13 +64,12 @@ const FacilityTable = (props) => {
   return (
     <Container>
       <Row className="facility-padding">
-        <Col md="auto">
+        {/* <Col>
           <h1 className="font-titles">Facilities</h1>
-        </Col>
-        <Col md="auto">
+        </Col> */}
+        <Col>
           <FacilityCreate FacilityTable={FacilityTable} token={props.token} />
         </Col>
-        <Col md="auto">{/* <ExportPDF /> */}</Col>
         <hr />
       </Row>
       <Table id="facilityTable" borderless hover>
