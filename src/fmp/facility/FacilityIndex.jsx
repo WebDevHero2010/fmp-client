@@ -36,6 +36,8 @@ const FacilityIndex = (props) => {
     setEditActive(false);
   };
 
+  //componentDidMount
+
   useEffect(() => {
     fetchFacility();
   }, []);
