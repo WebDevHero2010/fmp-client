@@ -2,15 +2,7 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  Row,
-  Container,
-  Col,
-} from "reactstrap";
+import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 class FacilityCreate extends Component {
   constructor(props) {
     super(props);
@@ -112,9 +104,9 @@ class FacilityCreate extends Component {
           this.toggle();
         }}
         render={({ errors, status, touched }) => (
-          <Container>
-            <Row>
-              <Col>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm">
                 <button
                   onClick={this.toggle}
                   className="btn btn-info"
@@ -122,8 +114,8 @@ class FacilityCreate extends Component {
                 >
                   Add Facility
                 </button>
-              </Col>
-            </Row>
+              </div>
+            </div>
             <Modal
               isOpen={this.state.modal}
               toggle={this.toggle}
@@ -134,299 +126,316 @@ class FacilityCreate extends Component {
               </ModalHeader>
               <ModalBody>
                 <Form>
-                  <Col>
-                    <div className="form-group">
-                      <label htmlFor="facilityName">Facility Name</label>
-                      <Field
-                        name="facilityName"
-                        type="text"
-                        className={
-                          "form-control" +
-                          (errors.facilityName && touched.facilityName
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="facilityName"
-                        component="div"
-                        className="invalid-feedback"
-                      />
+                  <div className="row">
+                    <div className="col">
+                      <div className="form-group">
+                        <label htmlFor="facilityName">Facility Name</label>
+                        <Field
+                          name="facilityName"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.facilityName && touched.facilityName
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="facilityName"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="address">Facility Address</label>
+                        <Field
+                          name="address"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.address && touched.address
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="address"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="state">Facility State</label>
+                        <Field
+                          name="state"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.state && touched.state ? " is-invalid" : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="state"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-g•••••••••••••roup">
+                        <label htmlFor="zipcode">Facility Zipcode</label>
+                        <Field
+                          name="zipcode"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.zipcode && touched.zipcode
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="zipcode"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="phonenumber">
+                          Facility Phone Number
+                        </label>
+                        <Field
+                          name="phonenumber"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.phonenumber && touched.phonenumber
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="phonenumber"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="facilityType">Facility Type</label>
+                        <Field
+                          name="facilityType"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.facilityType && touched.facilityTyAdd
+                              ? " is-invalid"
+                              : "")
+                          }
+                        ></Field>
+                        <ErrorMessage
+                          name="facilityType"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="menuType">Menu Type</label>
+                        <Field
+                          as="select"
+                          name="menuType"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.menuType && touched.menuType
+                              ? " is-invalid"
+                              : "")
+                          }
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </Field>
+                        <ErrorMessage
+                          name="menuType"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="operationStatus">
+                          Operation Status
+                        </label>
+                        <Field
+                          name="operationStatus"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.operationStatus && touched.operationStatus
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="operationStatus"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="address">Facility Address</label>
-                      <Field
-                        name="address"
-                        type="text"
-                        className={
-                          "form-control" +
-                          (errors.address && touched.address
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="address"
-                        component="div"
-                        className="invalid-feedback"
-                      />
+                    <div className="col">
+                      <div className="form-group">
+                        <label htmlFor="ownerEmail">
+                          Owner's Email Address
+                        </label>
+                        <Field
+                          name="ownerEmail"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerEmail && touched.ownerEmail
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerEmail"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerFirstName">
+                          Owner's First Name
+                        </label>
+                        <Field
+                          name="ownerFirstName"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerFirstName && touched.ownerFirstName
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerFirstName"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerLastName">Owner's Last Name</label>
+                        <Field
+                          name="ownerLastName"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerLastName && touched.ownerLastName
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerLastName"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerPhoneNumber">
+                          Owner Phone Number
+                        </label>
+                        <Field
+                          name="ownerPhoneNumber"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerPhoneNumber && touched.ownerPhoneNumber
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerPhoneNumber"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerAddress">Owner's Address</label>
+                        <Field
+                          name="ownerAddress"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerAddress && touched.ownerAddress
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerAddress"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerCity">Owner's City</label>
+                        <Field
+                          name="ownerCity"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerCity && touched.ownerCity
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerCity"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerState">Owner's State</label>
+                        <Field
+                          name="ownerState"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerState && touched.ownerState
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerState"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="ownerZipcode">Owner's Zipcode</label>
+                        <Field
+                          name="ownerZipcode"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.ownerZipcode && touched.ownerZipcode
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="ownerZipcode"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <br />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="state">Facility State</label>
-                      <Field
-                        name="state"
-                        type="text"
-                        className={
-                          "form-control" +
-                          (errors.state && touched.state ? " is-invalid" : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="state"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-g•••••••••••••roup">
-                      <label htmlFor="zipcode">Facility Zipcode</label>
-                      <Field
-                        name="zipcode"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.zipcode && touched.zipcode
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="zipcode"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="phonenumber">Facility Phone Number</label>
-                      <Field
-                        name="phonenumber"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.phonenumber && touched.phonenumber
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="phonenumber"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="facilityType">Facility Type</label>
-                      <Field
-                        name="facilityType"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.facilityType && touched.facilityTyAdd
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="facilityType"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="menuType">Menu Type</label>
-                      <Field
-                        name="menuType"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.menuType && touched.menuType
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="menuType"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="operationStatus">Operation Status</label>
-                      <Field
-                        name="operationStatus"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.operationStatus && touched.operationStatus
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="operationStatus"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="form-group">
-                      <label htmlFor="ownerEmail">Owner's Email Address</label>
-                      <Field
-                        name="ownerEmail"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerEmail && touched.ownerEmail
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerEmail"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerFirstName">Owner's First Name</label>
-                      <Field
-                        name="ownerFirstName"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerFirstName && touched.ownerFirstName
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerFirstName"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerLastName">Owner's Last Name</label>
-                      <Field
-                        name="ownerLastName"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerLastName && touched.ownerLastName
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerLastName"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerPhoneNumber">
-                        Owner Phone Number
-                      </label>
-                      <Field
-                        name="ownerPhoneNumber"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerPhoneNumber && touched.ownerPhoneNumber
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerPhoneNumber"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerAddress">Owner's Address</label>
-                      <Field
-                        name="ownerAddress"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerAddress && touched.ownerAddress
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerAddress"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerCity">Owner's City</label>
-                      <Field
-                        name="ownerCity"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerCity && touched.ownerCity
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerCity"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerState">Owner's State</label>
-                      <Field
-                        name="ownerState"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerState && touched.ownerState
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerState"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="ownerZipcode">Owner's Zipcode</label>
-                      <Field
-                        name="ownerZipcode"
-                        type="string"
-                        className={
-                          "form-control" +
-                          (errors.ownerZipcode && touched.ownerZipcode
-                            ? " is-invalid"
-                            : "")
-                        }
-                      />
-                      <ErrorMessage
-                        name="ownerZipcode"
-                        component="div"
-                        className="invalid-feedback"
-                      />
-                    </div>
-                    <br />
-                  </Col>
+                  </div>
                   <div className="CreateModalButtonDiv">
                     <button type="submit" className="btn btn-success">
                       Add
@@ -443,7 +452,7 @@ class FacilityCreate extends Component {
                 </Form>
               </ModalBody>
             </Modal>
-          </Container>
+          </div>
         )}
       />
     );

@@ -65,7 +65,10 @@ class FacilityTable extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="d-flex justify-content-between">
+        <div
+          className="d-flex justify-content-between"
+          style={{ paddingTop: "30px" }}
+        >
           <h1>Facilities</h1>
           <div>
             <FacilityCreate
