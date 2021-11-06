@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
 import FacilityTable from "./FacilityTable";
 import FacilityEdit from "./FacilityEdit";
 class FacilityIndex extends Component {
@@ -55,9 +54,9 @@ class FacilityIndex extends Component {
 
   render() {
     return (
-      <Container fluid={true}>
-        <Row>
-          <Col>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm">
             <FacilityTable
               facility={this.state.facility}
               editFacility={this.editFacility}
@@ -66,7 +65,7 @@ class FacilityIndex extends Component {
               token={this.props.token}
               setFacility={this.setFacility}
             />
-          </Col>
+          </div>
           {this.editActive ? (
             <FacilityEdit
               facilityToEdit={this.facilityToEdit}
@@ -77,81 +76,10 @@ class FacilityIndex extends Component {
           ) : (
             <></>
           )}
-        </Row>
-      </Container>
+        </div>
+      </div>
     );
   }
 }
 
 export default FacilityIndex;
-
-// const FacilityIndex = (props) => {
-//   const [facility, setFacility] = useState([]);
-//   const [editActive, setEditActive] = useState(false);
-//   const [facilityToEdit, setFacilityToEdit] = useState({});
-
-//   const fetchFacility = () => {
-//     fetch(`http://localhost:3000/facility/`, {
-//       method: "GET",
-//       headers: new Headers({
-//         "Content-Type": "application/json",
-//         Authorization: props.token,
-//       }),
-//     })
-//       .then((res) => res.json())
-//       .then((facilityData) => {
-//         setFacility(facilityData);
-//         console.log(facilityData);
-//       });
-//   };
-
-//   const editFacility = (facility) => {
-//     setFacilityToEdit(facility);
-//     console.log(facility);
-//   };
-
-//   const editOn = () => {
-//     setEditActive(true);
-//   };
-
-//   const editOff = () => {
-//     setEditActive(false);
-//   };
-
-//   //componentDidMount
-
-//   useEffect(() => {
-//     fetchFacility();
-//   }, []);
-
-//   return (
-//     <Container fluid={true}>
-//       <Row>
-//         <Col>
-//           <FacilityTable
-//             facility={facility}
-//             editFacility={editFacility}
-//             editOn={editOn}
-//             fetchFacility={fetchFacility}
-//             token={props.token}
-//           />
-//         </Col>
-//         {editActive ? (
-//           <FacilityEdit
-//             facilityToEdit={facilityToEdit}
-//             editOff={editOff}
-//             token={props.token}
-//             fetchFacility={fetchFacility}
-//           />
-//         ) : (
-//           <></>
-//         )}
-//       </Row>
-//     </Container>
-//   );
-// };
-// export default FacilityIndex;
-
-//   const [facility, setFacility] = useState([]);
-//   const [editActive, setEditActive] = useState(false);
-//   const [facilityToEdit, setFacilityToEdit] = useState({});

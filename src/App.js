@@ -1,6 +1,7 @@
 import { Container } from "reactstrap";
 import { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "daemonite-material/css/material.css";
+import "daemonite-material/js/material.js";
 import FMPNavbar from "./home/FMPNavbar";
 import Auth from "./auth/Auth";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -22,7 +23,6 @@ class App extends Component {
     if (!newToken) return;
     localStorage.setItem("token", newToken);
     this.setState({ sessionToken: newToken });
-    // console.log(this.state.sessionToken);
   };
 
   clearToken = () => {
@@ -55,47 +55,3 @@ class App extends Component {
 }
 
 export default App;
-
-// function App() {
-//   const [sessionToken, setSessionToken] = useState("");
-
-//   useEffect(() => {
-//     if (localStorage.getItem("token")) {
-//       setSessionToken(localStorage.getItem("token"));
-//     }
-//   }, []);
-
-//   const updateToken = (newToken) => {
-//     localStorage.setItem("token", newToken);
-//     setSessionToken(newToken);
-//     console.log(sessionToken);
-//   };
-
-//   const clearToken = () => {
-//     localStorage.clear();
-//     setSessionToken("");
-//   };
-
-//   const protectedViews = () => {
-//     return sessionToken === localStorage.getItem("token") ? (
-//       <FacilityIndex token={sessionToken} />
-//     ) : (
-//       <Auth updateToken={updateToken} />
-//     );
-//   };
-
-//   return (
-//     <Container fluid="true" className="App">
-//       <Router>
-//         <FMPNavbar
-//           clickLogout={clearToken}
-//           updateToken={updateToken}
-//           sessionToken={sessionToken}
-//         />
-//         {protectedViews()}
-//       </Router>
-//     </Container>
-//   );
-// }
-
-// export default App;

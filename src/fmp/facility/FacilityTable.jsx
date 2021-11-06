@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Table, Button, Container, Row, Col } from "reactstrap";
 import FacilityCreate from "./FacilityCreate";
 class FacilityTable extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class FacilityTable extends Component {
     return this.props.facility.map((facility, index) => {
       return (
         <tr key={index}>
-          <th scope="row">{facility.id}</th>
+          <th>{facility.id}</th>
           <td>{facility.facilityName}</td>
           <td>{facility.address}</td>
           <td>{facility.state}</td>
@@ -28,24 +27,25 @@ class FacilityTable extends Component {
           <td>{facility.ownerState}</td>
           <td>{facility.ownerZipcode}</td>
           <td>
-            <Button
-              className="btn-update"
-              color="black"
+            <button
+              className="btn btn-light"
               onClick={() => {
                 this.props.editFacility(facility);
                 this.props.editOn();
               }}
+              type="button"
             >
               Update
-            </Button>
-            <Button
-              color="black"
+            </button>
+            <button
+              className="btn btn-danger"
               onClick={() => {
                 this.deleteFacility(facility);
               }}
+              type="button"
             >
               Delete
-            </Button>
+            </button>
           </td>
         </tr>
       );
@@ -62,157 +62,49 @@ class FacilityTable extends Component {
     }).then(() => this.props.fetchFacility());
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.facility !== this.props.facility) {
-  //     // this.fetchFacility();
-  //   } else {
-  //     console.log("no Updates at this time");
-  //   }
-  // }
-
   render() {
     return (
-      <Container>
-        <Row className="facility-padding">
-          <Col>
-            <h1 className="font-titles">Facilities</h1>
-          </Col>
-          <Col>
+      <div className="container-fluid">
+        <div className="d-flex justify-content-between">
+          <h1>Facilities</h1>
+          <div>
             <FacilityCreate
               FacilityTable={FacilityTable}
               token={this.props.token}
               setFacility={this.props.setFacility}
             />
-          </Col>
-          <hr />
-        </Row>
-        <Table id="facilityTable" borderless hover>
-          <thead>
-            <tr className="font-table">
-              <th>Facility#</th>
-              <th>Facility Name:</th>
-              <th>Address</th>
-              <th>State</th>
-              <th>Zipcode</th>
-              <th>Phone#</th>
-              <th>Facility Type</th>
-              <th>Menu Type</th>
-              <th>Operation Status</th>
-              <th>Owner Email#</th>
-              <th>Owner Firstname</th>
-              <th>Owner Lastname</th>
-              <th>Owner Phone#</th>
-              <th>Owner Address</th>
-              <th>Owner City</th>
-              <th>Owner State</th>
-              <th>Owner Zipcode</th>
-            </tr>
-          </thead>
-          <tbody>{this.facilityMapper()}</tbody>
-        </Table>
-      </Container>
+          </div>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover .table-sm">
+            <thead className="thead-dark">
+              <tr>
+                <th scope={"col"}>Facility#</th>
+                <th scope={"col"}>Facility Name:</th>
+                <th scope={"col"}>Address</th>
+                <th scope={"col"}>State</th>
+                <th scope={"col"}>Zipcode</th>
+                <th scope={"col"}>Phone#</th>
+                <th scope={"col"}>Facility Type</th>
+                <th scope={"col"}>Menu Type</th>
+                <th scope={"col"}>Operation Status</th>
+                <th scope={"col"}>Owner Email#</th>
+                <th scope={"col"}>Owner Firstname</th>
+                <th scope={"col"}>Owner Lastname</th>
+                <th scope={"col"}>Owner Phone#</th>
+                <th scope={"col"}>Owner Address</th>
+                <th scope={"col"}>Owner City</th>
+                <th scope={"col"}>Owner State</th>
+                <th scope={"col"}>Owner Zipcode</th>
+                <th scope={"col"}>Edit or Remove</th>
+              </tr>
+            </thead>
+            <tbody>{this.facilityMapper()}</tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 }
 
 export default FacilityTable;
-
-// const FacilityTable = (props) => {
-//   const deleteFacility = (facility) => {
-//     fetch(`http://localhost:3000/facility/delete/${facility.id}`, {
-//       method: "DELETE",
-//       headers: new Headers({
-//         "Content-Type": "application/json",
-//         Authorization: props.token,
-//       }),
-//     }).then(() => props.fetchFacility());
-//   };
-//   console.log(props.facility);
-
-//   const facilityMapper = () => {
-//     return props.facility.map((facility, index) => {
-//       return (
-//         <tr key={index}>
-//           <th scope="row">{facility.id}</th>
-//           <td>{facility.facilityName}</td>
-//           <td>{facility.address}</td>
-//           <td>{facility.state}</td>
-//           <td>{facility.zipcode}</td>
-//           <td>{facility.phonenumber}</td>
-//           <td>{facility.facilityType}</td>
-//           <td>{facility.menuType}</td>
-//           <td>{facility.operationStatus}</td>
-//           <td>{facility.ownerEmail}</td>
-//           <td>{facility.ownerFirstName}</td>
-//           <td>{facility.ownerLastName}</td>
-//           <td>{facility.ownerPhoneNumber}</td>
-//           <td>{facility.ownerAddress}</td>
-//           <td>{facility.ownerCity}</td>
-//           <td>{facility.ownerState}</td>
-//           <td>{facility.ownerZipcode}</td>
-//           <td>
-//             <Button
-//               className="btn-update"
-//               color="black"
-//               onClick={() => {
-//                 props.editFacility(facility);
-//                 props.editOn();
-//               }}
-//             >
-//               Update
-//             </Button>
-//             <Button
-//               className="btn-delete"
-//               color="black"
-//               onClick={() => {
-//                 deleteFacility(facility);
-//               }}
-//             >
-//               Delete
-//             </Button>
-//           </td>
-//         </tr>
-//       );
-//     });
-//   };
-
-//   return (
-//     <Container>
-//       <Row className="facility-padding">
-//         {/* <Col>
-//           <h1 className="font-titles">Facilities</h1>
-//         </Col> */}
-//         <Col>
-//           <FacilityCreate FacilityTable={FacilityTable} token={props.token} />
-//         </Col>
-//         <hr />
-//       </Row>
-//       <Table id="facilityTable" borderless hover>
-//         <thead>
-//           <tr className="font-table">
-//             <th>Facility#</th>
-//             <th>Facility Name:</th>
-//             <th>Address</th>
-//             <th>State</th>
-//             <th>Zipcode</th>
-//             <th>Phone#</th>
-//             <th>Facility Type</th>
-//             <th>Menu Type</th>
-//             <th>Operation Status</th>
-//             <th>Owner Email#</th>
-//             <th>Owner Firstname</th>
-//             <th>Owner Lastname</th>
-//             <th>Owner Phone#</th>
-//             <th>Owner Address</th>
-//             <th>Owner City</th>
-//             <th>Owner State</th>
-//             <th>Owner Zipcode</th>
-//           </tr>
-//         </thead>
-//         <tbody>{facilityMapper()}</tbody>
-//       </Table>
-//     </Container>
-//   );
-// };
-
-// export default FacilityTable;

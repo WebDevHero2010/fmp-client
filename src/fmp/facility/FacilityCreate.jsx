@@ -115,13 +115,13 @@ class FacilityCreate extends Component {
           <Container>
             <Row>
               <Col>
-                <Button
-                  variant="primary"
+                <button
                   onClick={this.toggle}
-                  className="btn-create"
+                  className="btn btn-info"
+                  type="button"
                 >
                   Add Facility
-                </Button>
+                </button>
               </Col>
             </Row>
             <Modal
@@ -428,7 +428,7 @@ class FacilityCreate extends Component {
                     <br />
                   </Col>
                   <div className="CreateModalButtonDiv">
-                    <button type="submit" className="btn btn-primary mr-2">
+                    <button type="submit" className="btn btn-success">
                       Add
                     </button>
                     <Button
