@@ -6,12 +6,13 @@ import FMPNavbar from "./home/FMPNavbar";
 // import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
 // import InspectionPublic from "./public/InspectionPublic";
 import Auth from "./auth/Auth";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import FacilityIndex from "./fmp/facility/FacilityIndex";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setSessionToken(localStorage.getItem("token"));

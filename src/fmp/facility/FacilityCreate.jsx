@@ -16,8 +16,8 @@ class FacilityCreate extends Component {
     super(props);
     this.state = { modal: false };
   }
-  toggle = async () => {
-    await this.setState((prevState) => ({ modal: !prevState.modal }));
+  toggle = () => {
+    this.setState((prevState) => ({ modal: !prevState.modal }));
   };
 
   fetchFacility = async (fields) => {
@@ -108,6 +108,7 @@ class FacilityCreate extends Component {
           console.log(fields);
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
           this.fetchFacility(fields);
+          this.toggle();
         }}
         render={({ errors, status, touched }) => (
           <Container>
