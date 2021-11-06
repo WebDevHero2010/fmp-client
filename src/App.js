@@ -1,55 +1,101 @@
 import { Container } from "reactstrap";
-// import React, {}
-import React, { useState, useEffect } from "react";
+import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FMPNavbar from "./home/FMPNavbar";
-// import AdminDashIndex from "./fmp/adminDash/AdminDashIndex";
-// import InspectionPublic from "./public/InspectionPublic";
 import Auth from "./auth/Auth";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import FacilityIndex from "./fmp/facility/FacilityIndex";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { sessionToken: "" };
+  }
 
-function App() {
-  const [sessionToken, setSessionToken] = useState("");
+  componentDidMount() {
+    this.setState({
+      sessionToken: localStorage.getItem("token") ?? "",
+    });
+  }
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setSessionToken(localStorage.getItem("token"));
-    }
-  }, []);
-
-  const updateToken = (newToken) => {
+  updateToken = (newToken) => {
+    if (!newToken) return;
     localStorage.setItem("token", newToken);
-    setSessionToken(newToken);
-    console.log(sessionToken);
+    this.setState({ sessionToken: newToken });
+    // console.log(this.state.sessionToken);
   };
 
-  const clearToken = () => {
+  clearToken = () => {
     localStorage.clear();
-    setSessionToken("");
+    this.setState({ sessionToken: "" });
   };
 
-  const protectedViews = () => {
-    return sessionToken === localStorage.getItem("token") ? (
-      <FacilityIndex token={sessionToken} />
+  protectedViews = () => {
+    return this.state.sessionToken === localStorage.getItem("token") ? (
+      <FacilityIndex token={this.state.sessionToken} />
     ) : (
-      <Auth updateToken={updateToken} />
+      <Auth updateToken={this.updateToken} />
     );
   };
 
-  return (
-    <Container fluid="true" className="App">
-      <Router>
-        <FMPNavbar
-          clickLogout={clearToken}
-          updateToken={updateToken}
-          sessionToken={sessionToken}
-        />
-        {protectedViews()}
-      </Router>
-    </Container>
-  );
+  render() {
+    return (
+      <Container fluid="true" className="App">
+        <Router>
+          <FMPNavbar
+            clickLogout={this.clearToken}
+            updateToken={this.updateToken}
+            sessionToken={this.state.sessionToken}
+          />
+          {this.protectedViews()}
+        </Router>
+      </Container>
+    );
+  }
 }
 
 export default App;
+
+// function App() {
+//   const [sessionToken, setSessionToken] = useState("");
+
+//   useEffect(() => {
+//     if (localStorage.getItem("token")) {
+//       setSessionToken(localStorage.getItem("token"));
+//     }
+//   }, []);
+
+//   const updateToken = (newToken) => {
+//     localStorage.setItem("token", newToken);
+//     setSessionToken(newToken);
+//     console.log(sessionToken);
+//   };
+
+//   const clearToken = () => {
+//     localStorage.clear();
+//     setSessionToken("");
+//   };
+
+//   const protectedViews = () => {
+//     return sessionToken === localStorage.getItem("token") ? (
+//       <FacilityIndex token={sessionToken} />
+//     ) : (
+//       <Auth updateToken={updateToken} />
+//     );
+//   };
+
+//   return (
+//     <Container fluid="true" className="App">
+//       <Router>
+//         <FMPNavbar
+//           clickLogout={clearToken}
+//           updateToken={updateToken}
+//           sessionToken={sessionToken}
+//         />
+//         {protectedViews()}
+//       </Router>
+//     </Container>
+//   );
+// }
+
+// export default App;

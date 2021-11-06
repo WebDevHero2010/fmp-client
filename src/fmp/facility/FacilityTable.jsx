@@ -62,6 +62,14 @@ class FacilityTable extends Component {
     }).then(() => this.props.fetchFacility());
   };
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.facility !== this.props.facility) {
+  //     // this.fetchFacility();
+  //   } else {
+  //     console.log("no Updates at this time");
+  //   }
+  // }
+
   render() {
     return (
       <Container>
@@ -73,6 +81,7 @@ class FacilityTable extends Component {
             <FacilityCreate
               FacilityTable={FacilityTable}
               token={this.props.token}
+              setFacility={this.props.setFacility}
             />
           </Col>
           <hr />

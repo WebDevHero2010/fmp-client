@@ -20,7 +20,7 @@ class FacilityCreate extends Component {
     this.setState((prevState) => ({ modal: !prevState.modal }));
   };
 
-  fetchFacility = async (fields) => {
+  fetchPostFacility = (fields) => {
     fetch(`http://localhost:3000/facility/create`, {
       method: "POST",
       body: JSON.stringify({
@@ -50,7 +50,8 @@ class FacilityCreate extends Component {
     })
       .then((res) => res.json())
       .then((facilityData) => {
-        // window.location.href = "/";
+        this.props.setFacility(facilityData.log);
+        // console.log(facilityData, "fetch from Create");
       });
   };
   render() {
@@ -107,7 +108,7 @@ class FacilityCreate extends Component {
         onSubmit={(fields) => {
           console.log(fields);
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
-          this.fetchFacility(fields);
+          this.fetchPostFacility(fields);
           this.toggle();
         }}
         render={({ errors, status, touched }) => (

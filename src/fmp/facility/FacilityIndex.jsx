@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import FacilityTable from "./FacilityTable";
@@ -20,7 +19,7 @@ class FacilityIndex extends Component {
       .then((res) => res.json())
       .then((facilityData) => {
         this.setState({ facility: facilityData });
-        // console.log(facilityData);
+        console.log(facilityData, "fetchfrom Index");
         console.log(this.state.facility);
       });
   };
@@ -42,12 +41,17 @@ class FacilityIndex extends Component {
     this.fetchFacility();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(prevState.facility, "console log prevState from Index");
-    if (prevState.facility !== this.state.facility) {
-      console.log(prevState.facility, "afterupdate");
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.facility.length !== this.state.facility.length) {
+      this.setState({
+        facility: this.state.facility.sort((a, b) => b.id - a.id),
+      });
     }
   }
+
+  setFacility = (facility) => {
+    this.setState({ facility: [...this.state.facility, facility] });
+  };
 
   render() {
     return (
@@ -60,6 +64,7 @@ class FacilityIndex extends Component {
               editOn={this.editOn}
               fetchFacility={this.fetchFacility}
               token={this.props.token}
+              setFacility={this.setFacility}
             />
           </Col>
           {this.editActive ? (
