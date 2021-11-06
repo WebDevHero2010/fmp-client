@@ -4,9 +4,10 @@ import "daemonite-material/css/material.css";
 import "daemonite-material/js/material.js";
 import FMPNavbar from "./home/FMPNavbar";
 import Auth from "./auth/Auth";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import FacilityIndex from "./fmp/facility/FacilityIndex";
+import InspectionPublic from "./public/InspectionPublic";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -47,8 +48,8 @@ class App extends Component {
             updateToken={this.updateToken}
             sessionToken={this.state.sessionToken}
           />
-          {this.protectedViews()}
         </Router>
+        {this.protectedViews()}
       </Container>
     );
   }
