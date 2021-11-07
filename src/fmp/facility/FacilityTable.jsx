@@ -69,7 +69,7 @@ class FacilityTable extends Component {
           className="d-flex justify-content-between"
           style={{ paddingTop: "30px" }}
         >
-          <h1>Facilities</h1>
+          <h1>Facility Manager</h1>
           <div>
             <FacilityCreate
               FacilityTable={FacilityTable}

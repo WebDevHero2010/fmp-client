@@ -1,7 +1,6 @@
 import { Component } from "react";
 import LoginForm from "./LoginForm";
 import { Container } from "reactstrap";
-
 class Auth extends Component {
   constructor(props) {
     super(props);
@@ -10,20 +9,14 @@ class Auth extends Component {
   render() {
     return (
       <Container fluid={true}>
-        <LoginForm updateToken={this.props.updateToken} />
+        <LoginForm
+          updateToken={this.props.updateToken}
+          updateUserData={this.props.updateUserData}
+          dataUpdate={this.props.dataUpdate}
+        />
       </Container>
     );
   }
 }
 
 export default Auth;
-
-// const Auth = (props) => {
-//   return (
-//     <Container fluid={true}>
-//       <LoginForm updateToken={props.updateToken} />
-//     </Container>
-//   );
-// };
-
-// export default Auth;

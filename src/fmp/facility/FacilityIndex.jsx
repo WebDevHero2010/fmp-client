@@ -18,8 +18,8 @@ class FacilityIndex extends Component {
       .then((res) => res.json())
       .then((facilityData) => {
         this.setState({ facility: facilityData });
-        console.log(facilityData, "fetchfrom Index");
-        console.log(this.state.facility);
+        // console.log(facilityData, "fetchfrom Index");
+        // console.log(this.state.facility);
       });
   };
 

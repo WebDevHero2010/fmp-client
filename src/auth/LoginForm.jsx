@@ -55,8 +55,9 @@ const LoginForm = (props) => {
         } else if (data.error === "User does not exist.") {
           seterrorMSG(data.error);
         } else {
-          props.updateToken(data.sessionToken);
-          // props.setUserDisplayName(data.user.name);
+          props.dataUpdate(data);
+          // props.updateToken(data);
+          // console.log(data);
         }
       })
       .catch((error) => console.log(error));

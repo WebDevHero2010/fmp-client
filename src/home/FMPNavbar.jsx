@@ -6,6 +6,7 @@ class FMPNavbar extends Component {
     super(props);
     this.state = {};
   }
+
   loginOptionToggle = () => {
     return this.props.sessionToken === localStorage.getItem("token") ? (
       <div className="row" style={{ padding: "5px" }}>
@@ -22,7 +23,10 @@ class FMPNavbar extends Component {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <NavbarText className="userNameText">Hello, Username</NavbarText>
+            <NavbarText>
+              Hello {this.props.sessionUserData.firstName}{" "}
+              {this.props.sessionUserData.lastName}
+            </NavbarText>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
