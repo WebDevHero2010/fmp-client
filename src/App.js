@@ -16,16 +16,18 @@ class App extends Component {
   componentDidMount() {
     this.setState({
       sessionToken: localStorage.getItem("token") ?? "",
+      sessionUser: localStorage.getItem("user") ?? "",
     });
   }
 
-  updateToken = (newToken) => {
-    if (!newToken) return;
-    localStorage.setItem("token", newToken);
-    this.setState({ sessionToken: newToken });
-  };
+  // updateToken = (newToken) => {
+  //   if (!newToken) return;
+  //   localStorage.setItem("token", newToken);
+  //   this.setState({ sessionToken: newToken });
+  // };
 
   dataUpdate = (data) => {
+    if (!data) return;
     localStorage.setItem("token", data.sessionToken);
     localStorage.setItem("user", data.user);
     this.setState({ sessionToken: data.sessionToken });

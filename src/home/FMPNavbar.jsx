@@ -11,7 +11,7 @@ class FMPNavbar extends Component {
     return this.props.sessionToken === localStorage.getItem("token") ? (
       <div className="row" style={{ padding: "5px" }}>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -19,17 +19,17 @@ class FMPNavbar extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
             <NavbarText>
               Hello {this.props.sessionUserData.firstName}{" "}
               {this.props.sessionUserData.lastName}
             </NavbarText>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="/"
                 id="navbarDropdown"
                 role="button"
@@ -40,7 +40,7 @@ class FMPNavbar extends Component {
               >
                 Tools
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/inspectionmanager">
                   Inspection Manager
                 </Link>
@@ -74,7 +74,7 @@ class FMPNavbar extends Component {
             "navbar navbar-expand-lg navbar-dark bg-dark justify-content-between"
           }
         >
-          <a className={"navbar-brand"} href="/">
+          <a className="navbar-brand" href="/">
             Food Manager Pro
           </a>
           <div>{this.loginOptionToggle()}</div>

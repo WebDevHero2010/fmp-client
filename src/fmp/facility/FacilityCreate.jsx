@@ -438,17 +438,18 @@ class FacilityCreate extends Component {
                     </div>
                   </div>
                   <div className="CreateModalButtonDiv">
-                    <button type="submit" className="btn btn-success">
+                    <button type="submit" className="btn btn-outline-success">
                       Add
                     </button>
-                    <Button
-                      color="danger"
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger"
                       onClick={() => {
                         this.toggle();
                       }}
                     >
                       Cancel
-                    </Button>
+                    </button>
                   </div>
                 </Form>
               </ModalBody>
