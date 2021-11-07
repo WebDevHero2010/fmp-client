@@ -7,12 +7,7 @@ class AdminDashIndex extends Component {
     this.state = {};
   }
   render() {
-    return (
-      <Container>
-        <br />
-        <h1 className="adminDashH1">Administrator Dashboard</h1>
-      </Container>
-    );
+    return <Container>AdminDashMounted</Container>;
   }
 }
 

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Button, NavbarText } from "reactstrap";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Switch, Route, Router, Link } from "react-router-dom";
 class FMPNavbar extends Component {
   constructor(props) {
     super(props);
@@ -9,33 +9,54 @@ class FMPNavbar extends Component {
   loginOptionToggle = () => {
     return this.props.sessionToken === localStorage.getItem("token") ? (
       <div className="row" style={{ padding: "5px" }}>
-        <NavbarText className="userNameText">Hello, Username</NavbarText>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Tools
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <Link className="dropdown-item" to="/InspectionManager">
-              Inspection Manager
-            </Link>
-            <a class="dropdown-item" href="/">
-              Facility
-            </a>
-            <a class="dropdown-item" href="/">
-              temp
-            </a>
-          </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <NavbarText className="userNameText">Hello, Username</NavbarText>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style={{ color: "white" }}
+              >
+                Tools
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/inspectionmanager">
+                  Inspection Manager
+                </Link>
+                <Link className="dropdown-item" to="/">
+                  Facility Manager
+                </Link>
+                <Link className="dropdown-item" to="/admin">
+                  Admin Tools
+                </Link>
+              </div>
+            </li>
+            <Button
+              className="btn btn-warning"
+              type="button"
+              onClick={this.props.clickLogout}
+            >
+              Logout
+            </Button>
+          </ul>
         </div>
-        <Button className="submitBTN" onClick={this.props.clickLogout}>
-          Logout
-        </Button>
       </div>
     ) : (
       ""
