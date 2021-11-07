@@ -110,7 +110,7 @@ const LoginForm = (props) => {
         </FormGroup>
         <div className="LoginButtonSec">
           <Button className="submitBTN">Submit</Button>
-          <Button className="signupBTN" color="link" onClick={signupModalON}>
+          <Button color="link" onClick={signupModalON}>
             Click here to signup!
           </Button>
         </div>

@@ -1,13 +1,12 @@
 import { Container } from "reactstrap";
+import "djibe-material/css/material.css";
+import "djibe-material/css/material-plugins.css";
+import "djibe-material/js/material.js";
 import { Component } from "react";
-import "daemonite-material/css/material.css";
-import "daemonite-material/js/material.js";
 import FMPNavbar from "./home/FMPNavbar";
 import Auth from "./auth/Auth";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
-import FacilityIndex from "./fmp/facility/FacilityIndex";
-import InspectionPublic from "./public/InspectionPublic";
+import { BrowserRouter as Router } from "react-router-dom";
+import FMPSwitch from "./auth/FMPSwitch";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -33,8 +32,9 @@ class App extends Component {
 
   protectedViews = () => {
     return this.state.sessionToken === localStorage.getItem("token") ? (
-      <FacilityIndex token={this.state.sessionToken} />
+      <FMPSwitch token={this.state.sessionToken} />
     ) : (
+      // <FacilityIndex token={this.state.sessionToken} />
       <Auth updateToken={this.updateToken} />
     );
   };
@@ -48,8 +48,8 @@ class App extends Component {
             updateToken={this.updateToken}
             sessionToken={this.state.sessionToken}
           />
+          {this.protectedViews()}
         </Router>
-        {this.protectedViews()}
       </Container>
     );
   }

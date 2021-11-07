@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Button, NavbarText } from "reactstrap";
-import "../App.css";
+import { Link } from "react-router-dom";
 class FMPNavbar extends Component {
   constructor(props) {
     super(props);
@@ -8,8 +8,31 @@ class FMPNavbar extends Component {
   }
   loginOptionToggle = () => {
     return this.props.sessionToken === localStorage.getItem("token") ? (
-      <div>
+      <div className="row" style={{ padding: "5px" }}>
         <NavbarText className="userNameText">Hello, Username</NavbarText>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Tools
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <Link className="dropdown-item" to="/InspectionManager">
+              Inspection Manager
+            </Link>
+            <a class="dropdown-item" href="/">
+              Facility
+            </a>
+            <a class="dropdown-item" href="/">
+              temp
+            </a>
+          </div>
+        </div>
         <Button className="submitBTN" onClick={this.props.clickLogout}>
           Logout
         </Button>
