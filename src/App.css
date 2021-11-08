@@ -1,30 +1,5 @@
-html {
-  max-width: 100%;
-}
-
-.userNameText {
-  color: white !important;
-  margin-right: 10px;
-}
-/* change navbar to match county website color */
-.ColorTarget {
-  background-color: #3f4352 !important;
-}
-.CreateModalButtonDiv {
-  display: flex;
-  justify-content: space-between;
-}
-.ColorTarget2 {
-  background-color: #c06b43 !important;
-}
-
-.navbarSpace {
-  display: flex;
-  justify-content: space-between;
-}
-
-.facility-padding {
-  display: flex;
+body {
+  background-color: #f5f5f5;
 }
 
 /* css for login box */
@@ -51,10 +26,6 @@ html {
 .LoginButtonSec {
   display: flex;
   justify-content: space-between;
-}
-
-.submitBTN {
-  background-color: #c06b43 !important;
 }
 
 .LoginHeader {

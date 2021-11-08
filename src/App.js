@@ -7,6 +7,7 @@ import FMPNavbar from "./home/FMPNavbar";
 import Auth from "./auth/Auth";
 import { BrowserRouter as Router } from "react-router-dom";
 import FMPSwitch from "./auth/FMPSwitch";
+import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);

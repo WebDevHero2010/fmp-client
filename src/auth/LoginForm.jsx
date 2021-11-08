@@ -110,10 +110,16 @@ const LoginForm = (props) => {
           </p>
         </FormGroup>
         <div className="LoginButtonSec">
-          <Button className="submitBTN">Submit</Button>
-          <Button color="link" onClick={signupModalON}>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+          <button
+            type="button"
+            className="btn btn-link"
+            onClick={signupModalON}
+          >
             Click here to signup!
-          </Button>
+          </button>
         </div>
         <Alert color="danger" isOpen={visible}>
           {errorMsg}

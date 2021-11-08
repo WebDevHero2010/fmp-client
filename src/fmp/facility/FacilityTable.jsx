@@ -18,14 +18,14 @@ class FacilityTable extends Component {
           <td>{facility.facilityType}</td>
           <td>{facility.menuType}</td>
           <td>{facility.operationStatus}</td>
-          <td>{facility.ownerEmail}</td>
+          {/* <td>{facility.ownerEmail}</td>
           <td>{facility.ownerFirstName}</td>
           <td>{facility.ownerLastName}</td>
           <td>{facility.ownerPhoneNumber}</td>
           <td>{facility.ownerAddress}</td>
           <td>{facility.ownerCity}</td>
           <td>{facility.ownerState}</td>
-          <td>{facility.ownerZipcode}</td>
+          <td>{facility.ownerZipcode}</td> */}
           <td>
             <button
               className="btn btn-light"
@@ -35,7 +35,7 @@ class FacilityTable extends Component {
               }}
               type="button"
             >
-              Update
+              Edit/View
             </button>
             <button
               className="btn btn-danger"
@@ -69,7 +69,7 @@ class FacilityTable extends Component {
           className="d-flex justify-content-between"
           style={{ paddingTop: "30px" }}
         >
-          <h3>Facility Manager</h3>
+          <h3>Facilities</h3>
           <div>
             <FacilityCreate
               FacilityTable={FacilityTable}
@@ -91,15 +91,15 @@ class FacilityTable extends Component {
                 <th scope={"col"}>Facility Type</th>
                 <th scope={"col"}>Menu Type</th>
                 <th scope={"col"}>Operation Status</th>
-                <th scope={"col"}>Owner Email#</th>
+                {/* <th scope={"col"}>Owner Email#</th>
                 <th scope={"col"}>Owner Firstname</th>
                 <th scope={"col"}>Owner Lastname</th>
                 <th scope={"col"}>Owner Phone#</th>
                 <th scope={"col"}>Owner Address</th>
                 <th scope={"col"}>Owner City</th>
                 <th scope={"col"}>Owner State</th>
-                <th scope={"col"}>Owner Zipcode</th>
-                <th scope={"col"}>Edit or Remove</th>
+                <th scope={"col"}>Owner Zipcode</th> */}
+                <th scope={"col"}>Actions</th>
               </tr>
             </thead>
             <tbody>{this.facilityMapper()}</tbody>
