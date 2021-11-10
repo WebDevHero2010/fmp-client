@@ -96,11 +96,12 @@ class FacilityCreate extends Component {
           ownerState: Yup.string().required("Owner State is required"),
           ownerZipcode: Yup.string().required("Owner Zipcode is required."),
         })}
-        onSubmit={(fields) => {
-          console.log(fields);
+        onSubmit={(fields, { resetForm }) => {
+          // console.log(fields);
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
           this.fetchPostFacility(fields);
           this.toggle();
+          resetForm({ fields: this.initialValues });
         }}
         render={({ errors, status, touched }) => (
           <div className="container-fluid">
@@ -442,7 +443,7 @@ class FacilityCreate extends Component {
                         Add
                       </button>
                       <button
-                        type="button"
+                        type="reset"
                         className="btn btn-outline-danger"
                         onClick={() => {
                           this.toggle();
