@@ -180,7 +180,7 @@ class FacilityCreate extends Component {
                           className="invalid-feedback"
                         />
                       </div>
-                      <div className="form-g•••••••••••••roup">
+                      <div className="form-group">
                         <label htmlFor="zipcode">Facility Zipcode</label>
                         <Field
                           name="zipcode"
@@ -225,7 +225,7 @@ class FacilityCreate extends Component {
                           type="string"
                           className={
                             "form-control" +
-                            (errors.facilityType && touched.facilityTyAdd
+                            (errors.facilityType && touched.facilityType
                               ? " is-invalid"
                               : "")
                           }
