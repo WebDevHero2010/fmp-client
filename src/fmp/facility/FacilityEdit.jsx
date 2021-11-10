@@ -27,30 +27,31 @@ class FacilityEdit extends Component {
     };
   }
 
-  facilityUpdate = (e, facility) => {
-    e.preventDefault();
+  facilityUpdate = (fields) => {
+    // e.preventDefault();
+    // console.log(fields, "facilityUpdate from facilityEdit");
     fetch(
       `http://localhost:3000/facility/update/${this.props.facilityToEdit.id}`,
       {
         method: "PUT",
         body: JSON.stringify({
           facility: {
-            facilityName: this.state.facilityName,
-            address: this.state.address,
-            state: this.state.state,
-            zipcode: this.state.zipcode,
-            phonenumber: this.state.phonenumber,
-            facilityType: this.state.facilityType,
-            menuType: this.state.menuType,
-            operationStatus: this.state.operationStatus,
-            ownerEmail: this.state.ownerEmail,
-            ownerFirstName: this.state.ownerFirstName,
-            ownerLastName: this.state.ownerLastName,
-            ownerPhoneNumber: this.state.ownerPhoneNumber,
-            ownerAddress: this.state.ownerAddress,
-            ownerCity: this.state.ownerCity,
-            ownerState: this.state.ownerState,
-            ownerZipcode: this.state.ownerState,
+            facilityName: fields.facilityName,
+            address: fields.address,
+            state: fields.state,
+            zipcode: fields.zipcode,
+            phonenumber: fields.phonenumber,
+            facilityType: fields.facilityType,
+            menuType: fields.menuType,
+            operationStatus: fields.operationStatus,
+            ownerEmail: fields.ownerEmail,
+            ownerFirstName: fields.ownerFirstName,
+            ownerLastName: fields.ownerLastName,
+            ownerPhoneNumber: fields.ownerPhoneNumber,
+            ownerAddress: fields.ownerAddress,
+            ownerCity: fields.ownerCity,
+            ownerState: fields.ownerState,
+            ownerZipcode: fields.ownerState,
           },
         }),
         headers: new Headers({
@@ -66,7 +67,7 @@ class FacilityEdit extends Component {
 
   editToggle = () => {
     this.setState((prevState) => ({ editModal: !prevState.editModal }));
-    console.log(this.state.editModal, "toggle from Edit");
+    // console.log(this.state.editModal, "toggle from Edit");
   };
 
   componentDidMount() {
@@ -77,22 +78,22 @@ class FacilityEdit extends Component {
     return (
       <Formik
         initialValues={{
-          facilityName: "",
-          address: "",
-          state: "",
-          zipcode: "",
-          phonenumber: "",
-          facilityType: "",
-          menuType: "",
-          operationStatus: "",
-          ownerEmail: "",
-          ownerFirstName: "",
-          ownerLastName: "",
-          ownerPhoneNumber: "",
-          ownerAddress: "",
-          ownerCity: "",
-          ownerState: "",
-          ownerZipcode: "",
+          facilityName: this.state.editFacilityName,
+          address: this.state.editAddress,
+          state: this.state.editState,
+          zipcode: this.state.editZipcode,
+          phonenumber: this.state.editPhoneNumber,
+          facilityType: this.state.editFacilityType,
+          menuType: this.state.editMenuType,
+          operationStatus: this.state.editOperationStatus,
+          ownerEmail: this.state.editOwnerEmail,
+          ownerFirstName: this.state.editOwnerFirstName,
+          ownerLastName: this.state.editOwnerLastName,
+          ownerPhoneNumber: this.state.editOwnerPhoneNumber,
+          ownerAddress: this.state.editOwnerAddress,
+          ownerCity: this.state.editOwnerCity,
+          ownerState: this.state.editOwnerState,
+          ownerZipcode: this.state.editOwnerZipcode,
         }}
         validationSchema={Yup.object().shape({
           facilityName: Yup.string().required("Facility Name is required"),
@@ -125,11 +126,10 @@ class FacilityEdit extends Component {
           ownerZipcode: Yup.string().required("Owner Zipcode is required."),
         })}
         onSubmit={(fields) => {
-          this.facilityUpdate();
+          this.facilityUpdate(fields);
           this.editToggle();
           // console.log(fields);
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
-          // this.fetchPostFacility(fields);
         }}
         render={({ errors, status, touched }) => (
           <div className="container-fluid">
@@ -151,15 +151,11 @@ class FacilityEdit extends Component {
                         <Field
                           name="facilityName"
                           type="text"
-                          value={this.state.editFacilityName}
                           className={
                             "form-control" +
                             (errors.facilityName && touched.facilityName
                               ? " is-invalid"
                               : "")
-                          }
-                          onChange={(e) =>
-                            this.setState({ editFacilityName: e.target.value })
                           }
                         />
                         <ErrorMessage
