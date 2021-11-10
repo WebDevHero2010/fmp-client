@@ -17,12 +17,12 @@ class AdminDashIndex extends Component {
           <h3 className="d-flex justify-content-center">
             See below for Resources
           </h3>
-          <div class="accordion" id="accordionExample">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
+          <div className="accordion" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingOne">
+                <h2 className="mb-0">
                   <button
-                    class="btn btn-link btn-block text-left"
+                    className="btn btn-link btn-block text-left"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseOne"
@@ -35,11 +35,11 @@ class AdminDashIndex extends Component {
               </div>
               <div
                 id="collapseOne"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingOne"
                 data-parent="#accordionExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   <a
                     href="https://www.in.gov/health/food-protection/laws-rules-and-regulations/"
                     target="_blank"
@@ -50,11 +50,11 @@ class AdminDashIndex extends Component {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
+            <div className="card">
+              <div className="card-header" id="headingTwo">
+                <h2 className="mb-0">
                   <button
-                    class="btn btn-link btn-block text-left collapsed"
+                    className="btn btn-link btn-block text-left collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseTwo"
@@ -67,11 +67,11 @@ class AdminDashIndex extends Component {
               </div>
               <div
                 id="collapseTwo"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingTwo"
                 data-parent="#accordionExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   <a
                     href="https://www.in.gov/health/food-protection/retail-information/certification-of-food-handler-requirements/"
                     target="_blank"
@@ -82,11 +82,11 @@ class AdminDashIndex extends Component {
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
+            <div className="card">
+              <div className="card-header" id="headingThree">
+                <h2 className="mb-0">
                   <button
-                    class="btn btn-link btn-block text-left collapsed"
+                    className="btn btn-link btn-block text-left collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseThree"
@@ -99,11 +99,11 @@ class AdminDashIndex extends Component {
               </div>
               <div
                 id="collapseThree"
-                class="collapse"
+                className="collapse"
                 aria-labelledby="headingThree"
                 data-parent="#accordionExample"
               >
-                <div class="card-body">
+                <div className="card-body">
                   <a
                     href="https://www.in.gov/health/food-protection/"
                     target="_blank"

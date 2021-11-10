@@ -1,8 +1,7 @@
 import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
-import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
 class FacilityCreate extends Component {
   constructor(props) {
     super(props);
@@ -437,19 +436,21 @@ class FacilityCreate extends Component {
                       <br />
                     </div>
                   </div>
-                  <div className="CreateModalButtonDiv">
-                    <button type="submit" className="btn btn-outline-success">
-                      Add
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger"
-                      onClick={() => {
-                        this.toggle();
-                      }}
-                    >
-                      Cancel
-                    </button>
+                  <div>
+                    <div className="d-flex justify-content-between">
+                      <button type="submit" className="btn btn-outline-success">
+                        Add
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger"
+                        onClick={() => {
+                          this.toggle();
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 </Form>
               </ModalBody>

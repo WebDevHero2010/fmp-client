@@ -21,6 +21,9 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.dataUpdate();
+  }
   // updateToken = (newToken) => {
   //   if (!newToken) return;
   //   localStorage.setItem("token", newToken);

@@ -25,15 +25,17 @@ class FacilityIndex extends Component {
 
   editFacility = (facility) => {
     this.setState({ facilityToEdit: facility });
-    console.log(this.state.facilityToEdit);
+    console.log(this.state.facilityToEdit, "from editFacility");
   };
 
   editOn = () => {
-    this.setState({ EditActive: true });
+    this.setState({ editActive: true });
+    // console.log(this.state.editActive, "editOn fired off");
   };
 
   editOff = () => {
-    this.setState({ EditActive: false });
+    this.setState({ editActive: false });
+    // console.log(this.state.editActive, "editOff fired off");
   };
 
   componentDidMount() {
@@ -66,9 +68,9 @@ class FacilityIndex extends Component {
               setFacility={this.setFacility}
             />
           </div>
-          {this.editActive ? (
+          {this.state.editActive ? (
             <FacilityEdit
-              facilityToEdit={this.facilityToEdit}
+              facilityToEdit={this.state.facilityToEdit}
               editOff={this.editOff}
               token={this.props.token}
               fetchFacility={this.fetchFacility}
