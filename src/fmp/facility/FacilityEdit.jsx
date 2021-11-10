@@ -35,7 +35,7 @@ class FacilityEdit extends Component {
         method: "PUT",
         body: JSON.stringify({
           facility: {
-            facilityName: this.state.editfacilityName,
+            facilityName: this.state.facilityName,
             address: this.state.address,
             state: this.state.state,
             zipcode: this.state.zipcode,
@@ -73,31 +73,27 @@ class FacilityEdit extends Component {
     this.editToggle();
   }
 
-  // componentDidUpdate() {
-  //   this.editToggle();
-  // }
-
   render() {
     return (
       <Formik
-        // initialValues={{
-        //   facilityName: "",
-        //   address: "",
-        //   state: "",
-        //   zipcode: "",
-        //   phonenumber: "",
-        //   facilityType: "",
-        //   menuType: "",
-        //   operationStatus: "",
-        //   ownerEmail: "",
-        //   ownerFirstName: "",
-        //   ownerLastName: "",
-        //   ownerPhoneNumber: "",
-        //   ownerAddress: "",
-        //   ownerCity: "",
-        //   ownerState: "",
-        //   ownerZipcode: "",
-        // }}
+        initialValues={{
+          facilityName: "",
+          address: "",
+          state: "",
+          zipcode: "",
+          phonenumber: "",
+          facilityType: "",
+          menuType: "",
+          operationStatus: "",
+          ownerEmail: "",
+          ownerFirstName: "",
+          ownerLastName: "",
+          ownerPhoneNumber: "",
+          ownerAddress: "",
+          ownerCity: "",
+          ownerState: "",
+          ownerZipcode: "",
+        }}
         validationSchema={Yup.object().shape({
           facilityName: Yup.string().required("Facility Name is required"),
           address: Yup.string().required("Facility Address is required"),
@@ -155,11 +151,15 @@ class FacilityEdit extends Component {
                         <Field
                           name="facilityName"
                           type="text"
+                          value={this.state.editFacilityName}
                           className={
                             "form-control" +
                             (errors.facilityName && touched.facilityName
                               ? " is-invalid"
                               : "")
+                          }
+                          onChange={(e) =>
+                            this.setState({ editFacilityName: e.target.value })
                           }
                         />
                         <ErrorMessage
