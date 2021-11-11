@@ -7,6 +7,7 @@ class InspectionTable extends Component {
   }
 
   inspectionMapper = () => {
+    // console.log(this.props.inspection, "console.log from inspectionTable");
     return this.props.inspection.map((inspection, index) => {
       return (
         <tr key={index}>
@@ -19,6 +20,7 @@ class InspectionTable extends Component {
           <td>{inspection.facilityId}</td>
           <td>{inspection.menuType}</td>
           <td>{inspection.operationStatus}</td>
+          <td>{inspection.createdAt}</td>
           <td>
             <button
               className="btn btn-light"
@@ -82,6 +84,7 @@ class InspectionTable extends Component {
                 <th scope={"col"}>Violation Findings:</th>
                 <th scope={"col"}>To Be Corrected By:</th>
                 <th scope={"col"}>Facility Name</th>
+                <th scope={"col"}>Created At:</th>
                 <th scope={"col"}>Actions</th>
               </tr>
             </thead>

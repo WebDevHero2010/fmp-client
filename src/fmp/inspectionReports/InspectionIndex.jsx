@@ -12,7 +12,6 @@ class InspectionIndex extends Component {
   }
 
   fetchInspections = () => {
-    console.log(this.props.token, "consolelog from fetch inspections");
     fetch(`http://localhost:3000/inspectionreports/`, {
       method: "GET",
       headers: new Headers({
