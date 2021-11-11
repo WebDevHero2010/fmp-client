@@ -11,7 +11,8 @@ class InspectionIndex extends Component {
     };
   }
 
-  fetchInspection = () => {
+  fetchInspections = () => {
+    console.log(this.props.token, "consolelog from fetch inspections");
     fetch(`http://localhost:3000/inspectionreports/`, {
       method: "GET",
       headers: new Headers({
@@ -40,7 +41,7 @@ class InspectionIndex extends Component {
   };
 
   componentDidMount() {
-    this.fetchInspection();
+    this.fetchInspections();
   }
 
   componentDidUpdate(prevProps, prevState) {

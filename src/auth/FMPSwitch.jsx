@@ -15,20 +15,17 @@ class FMPSwitch extends Component {
         <Switch>
           <Route
             path="/inspectionmanager"
-            token={this.props.token}
             exact
-            component={InspectionIndex}
+            component={() => <InspectionIndex token={this.props.token} />}
           />
           <Route
             path="/admin"
-            token={this.props.token}
             exact
-            component={AdminDashIndex}
+            component={() => <AdminDashIndex token={this.props.token} />}
           />
           <Route exact path="/">
             {" "}
             <FacilityIndex token={this.props.token} />
-            {/* {console.log(this.props.token)} */}
           </Route>
         </Switch>
       </div>
