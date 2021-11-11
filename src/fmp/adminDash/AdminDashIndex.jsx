@@ -17,7 +17,7 @@ class AdminDashIndex extends Component {
           <div className="card-deck d-flex justify-content-between">
             <div
               className="card text-white bg-success mb-3"
-              style={{ maxWidth: "18rem" }}
+              style={{ maxWidth: "25rem" }}
             >
               <div className="card-header">Header</div>
               <div className="card-body">
@@ -30,7 +30,7 @@ class AdminDashIndex extends Component {
             </div>
             <div
               className="card text-white bg-warning mb-3"
-              style={{ maxWidth: "18rem" }}
+              style={{ maxWidth: "25rem" }}
             >
               <div className="card-header">Header</div>
               <div className="card-body">
@@ -43,7 +43,7 @@ class AdminDashIndex extends Component {
             </div>
             <div
               className="card text-white bg-primary mb-3"
-              style={{ maxWidth: "18rem" }}
+              style={{ maxWidth: "25rem" }}
             >
               <div className="card-header">Header</div>
               <div className="card-body">
@@ -56,7 +56,7 @@ class AdminDashIndex extends Component {
             </div>
             <div
               className="card text-white bg-danger mb-3"
-              style={{ maxWidth: "18rem" }}
+              style={{ maxWidth: "25rem" }}
             >
               <div className="card-header">Header</div>
               <div className="card-body">

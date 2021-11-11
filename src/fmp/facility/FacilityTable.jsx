@@ -63,7 +63,7 @@ class FacilityTable extends Component {
         >
           <div
             className="card text-white bg-success mb-3"
-            style={{ maxWidth: "18rem" }}
+            style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
               <h5>Facilities Open</h5>
@@ -80,7 +80,7 @@ class FacilityTable extends Component {
           </div>
           <div
             className="card text-white bg-warning mb-3"
-            style={{ maxWidth: "18rem" }}
+            style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
               <h5>Facilities Suspended </h5>
@@ -97,7 +97,7 @@ class FacilityTable extends Component {
           </div>
           <div
             className="card text-white bg-danger mb-3"
-            style={{ maxWidth: "18rem" }}
+            style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
               <h5>Facilities Closed</h5>
