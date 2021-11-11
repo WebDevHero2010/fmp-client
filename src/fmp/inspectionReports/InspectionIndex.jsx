@@ -22,7 +22,7 @@ class InspectionIndex extends Component {
       .then((res) => res.json())
       .then((inspectionData) => {
         this.setState({ inspection: inspectionData });
-        console.log(this.state.inspection);
+        console.log(this.state.inspection, "from inspection Index");
       });
   };
 

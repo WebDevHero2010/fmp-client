@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { NavbarText } from "reactstrap";
 import { BrowserRouter as Switch, Route, Router, Link } from "react-router-dom";
+import "../public/assets/FMP-light.png";
 class FMPNavbar extends Component {
   constructor(props) {
     super(props);
@@ -24,8 +25,8 @@ class FMPNavbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <NavbarText>
-              Hello {this.props.sessionUserData.firstName}{" "}
-              {this.props.sessionUserData.lastName}
+              Hello {this.props.sessionUser.firstName}{" "}
+              {this.props.sessionUser.lastName}
             </NavbarText>
             <li className="nav-item dropdown">
               <a
@@ -75,8 +76,16 @@ class FMPNavbar extends Component {
           }
         >
           <a className="navbar-brand" href="/">
+            <img
+              src="/docs/5.0/assets/brand/bootstrap-logo.svg"
+              alt=""
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top"
+            />
             Food Manager Pro
           </a>
+          <img src="../public/assets/FMP-light.png" alt="" srcset="" />
           <div>{this.loginOptionToggle()}</div>
         </nav>
       </div>

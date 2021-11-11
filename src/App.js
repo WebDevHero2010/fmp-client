@@ -30,6 +30,12 @@ class App extends Component {
   //   this.setState({ sessionToken: newToken });
   // };
 
+  // updateUser = (user) => {
+  //   if (!user) return;
+  //   localStorage.setItem("user", user);
+  //   this.setState({ sessionUser: user });
+  // };
+
   dataUpdate = (data) => {
     if (!data) return;
     localStorage.setItem("token", data.sessionToken);
@@ -61,9 +67,10 @@ class App extends Component {
           <FMPNavbar
             clickLogout={this.clearToken}
             updateToken={this.updateToken}
+            updateUser={this.updateUser}
             dataUpdate={this.dataUpdate}
             sessionToken={this.state.sessionToken}
-            sessionUserData={this.state.sessionUser}
+            sessionUser={this.state.sessionUser}
           />
           {this.protectedViews()}
         </Router>

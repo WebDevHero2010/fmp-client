@@ -51,6 +51,7 @@ class InspectionCreate extends Component {
       .then((res) => res.json())
       .then((inspectionReportData) => {
         this.props.setInspection(inspectionReportData.log);
+        console.log(inspectionReportData.log, "inspectionCreate");
       });
   };
 
@@ -96,7 +97,6 @@ class InspectionCreate extends Component {
           facilityId: Yup.number().required("Facility Required"),
         })}
         onSubmit={(fields, { resetForm }) => {
-          console.log(fields);
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
           this.fetchPostInspection(fields);
           this.toggle();

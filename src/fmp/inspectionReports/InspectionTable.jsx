@@ -20,7 +20,7 @@ class InspectionTable extends Component {
           <td>{inspection.releaseDate}</td>
           <td>{inspection.violationFindings}</td>
           <td>{inspection.toBeCorrectedBy}</td>
-          <td>{inspection.facilityId}</td>
+          <td>{inspection?.facility?.facilityName}</td>
           <td>{inspection.createdAt}</td>
           <td>
             <button
