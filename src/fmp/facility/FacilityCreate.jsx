@@ -107,11 +107,24 @@ class FacilityCreate extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm">
-                <button
+                {/* <button
                   onClick={this.toggle}
                   className="btn btn-info"
                   type="button"
                 >
+                  Add Facility
+                </button> */}
+                <button
+                  className="btn btn-info"
+                  type="button"
+                  onClick={this.toggle}
+                >
+                  <i
+                    className="material-icons btn-icon-prepend"
+                    aria-hidden="true"
+                  >
+                    add
+                  </i>
                   Add Facility
                 </button>
               </div>

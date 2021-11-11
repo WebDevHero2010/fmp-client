@@ -6,7 +6,7 @@ class InspectionEdit extends Component {
     this.state = {};
   }
   render() {
-    return <div>InspectionEdit</div>;
+    return <div></div>;
   }
 }
 

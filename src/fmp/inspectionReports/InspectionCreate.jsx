@@ -79,7 +79,13 @@ class InspectionCreate extends Component {
                   className="btn btn-info"
                   type="button"
                 >
-                  Create Report
+                  <i
+                    className="material-icons btn-icon-prepend"
+                    aria-hidden="true"
+                  >
+                    add
+                  </i>
+                  New Inspection
                 </button>
               </div>
             </div>

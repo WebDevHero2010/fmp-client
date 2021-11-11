@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Button, NavbarText } from "reactstrap";
+import { NavbarText } from "reactstrap";
 import { BrowserRouter as Switch, Route, Router, Link } from "react-router-dom";
 class FMPNavbar extends Component {
   constructor(props) {
@@ -52,13 +52,13 @@ class FMPNavbar extends Component {
                 </Link>
               </div>
             </li>
-            <Button
-              className="btn btn-warning"
+            <button
+              className="btn btn-light"
               type="button"
               onClick={this.props.clickLogout}
             >
               Logout
-            </Button>
+            </button>
           </ul>
         </div>
       </div>
