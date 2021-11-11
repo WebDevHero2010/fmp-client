@@ -6,13 +6,27 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 class InspectionCreate extends Component {
   constructor(props) {
     super(props);
-    this.state = { inspectionModalCreate: false };
+    this.state = { inspectionModalCreate: false, facilityDropDown: [] };
   }
 
   toggle = () => {
     this.setState((prevState) => ({
       inspectionModalCreate: !prevState.inspectionModalCreate,
     }));
+  };
+
+  getFacilityDropdown = () => {
+    fetch(`http://localhost:3000/facility/`, {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.token,
+      }),
+    })
+      .then((res) => res.json())
+      .then((facilityData) => {
+        this.setState({ facilityDropDown: facilityData });
+      });
   };
 
   fetchPostInspection = (fields) => {
@@ -39,6 +53,24 @@ class InspectionCreate extends Component {
         this.props.setInspection(inspectionReportData.log);
       });
   };
+
+  facilityDropDownMapper = () => {
+    return this.state.facilityDropDown.map((facility, index) => {
+      return (
+        <option key={index} value={facility.id}>
+          {facility.facilityName}
+        </option>
+      );
+    });
+  };
+
+  resetFacilityDropdown = () => {
+    this.setState({ facilityDropDown: [""] });
+  };
+
+  componentDidMount() {
+    this.getFacilityDropdown();
+  }
 
   render() {
     return (
@@ -197,9 +229,12 @@ class InspectionCreate extends Component {
                         />
                       </div>
                       <div className="form-group">
-                        <label htmlFor="facilityId">Facility</label>
+                        <label htmlFor="facilityId">
+                          Facility being inspected
+                        </label>
                         <Field
                           name="facilityId"
+                          as="select"
                           type="number"
                           className={
                             "form-control" +
@@ -207,7 +242,10 @@ class InspectionCreate extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        ></Field>
+                        >
+                          <option></option>
+                          {this.facilityDropDownMapper()}
+                        </Field>
                         <ErrorMessage
                           name="facilityId"
                           component="div"
@@ -227,6 +265,7 @@ class InspectionCreate extends Component {
                         className="btn btn-outline-danger"
                         onClick={() => {
                           this.toggle();
+                          // this.resetFacilityDropdown();
                         }}
                       >
                         Cancel

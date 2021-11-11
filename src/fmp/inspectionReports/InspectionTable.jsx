@@ -6,6 +6,10 @@ class InspectionTable extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.inspectionMapper();
+  }
+
   inspectionMapper = () => {
     return this.props.inspection.map((inspection, index) => {
       return (
@@ -74,13 +78,13 @@ class InspectionTable extends Component {
           <table className="table table-striped table-hover .table-sm">
             <thead className="thead-dark">
               <tr>
-                <th scope={"col"}>Inspection ID#</th>
+                <th scope={"col"}>Inspection ID#:</th>
                 <th scope={"col"}>Purpose:</th>
                 <th scope={"col"}>Follow Update:</th>
                 <th scope={"col"}>Release Date:</th>
                 <th scope={"col"}>Violation Findings:</th>
                 <th scope={"col"}>To Be Corrected By:</th>
-                <th scope={"col"}>Facility Name</th>
+                <th scope={"col"}>Facility Inspected:</th>
                 <th scope={"col"}>Created At:</th>
                 <th scope={"col"}>Actions</th>
               </tr>

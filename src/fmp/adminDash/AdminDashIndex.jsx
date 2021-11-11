@@ -6,7 +6,7 @@ class AdminDashIndex extends Component {
   }
   render() {
     return (
-      <div className="container" style={{ paddingTop: "30px" }}>
+      <div className="container-fluid" style={{ paddingTop: "30px" }}>
         <div className="jumbotron">
           <h1 className="display-4">Food Manager Pro</h1>
           <p className="lead">
@@ -14,6 +14,60 @@ class AdminDashIndex extends Component {
             local facilities and inspections
           </p>
           <hr className="my-4" />
+          <div className="card-deck d-flex justify-content-between">
+            <div
+              className="card text-white bg-success mb-3"
+              style={{ maxWidth: "18rem" }}
+            >
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">Primary card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+            <div
+              className="card text-white bg-warning mb-3"
+              style={{ maxWidth: "18rem" }}
+            >
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">Primary card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+            <div
+              className="card text-white bg-primary mb-3"
+              style={{ maxWidth: "18rem" }}
+            >
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">Primary card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+            <div
+              className="card text-white bg-danger mb-3"
+              style={{ maxWidth: "18rem" }}
+            >
+              <div className="card-header">Header</div>
+              <div className="card-body">
+                <h5 className="card-title">Primary card title</h5>
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
           <h3 className="d-flex justify-content-center">
             See below for Resources
           </h3>

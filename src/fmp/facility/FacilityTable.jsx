@@ -58,6 +58,62 @@ class FacilityTable extends Component {
     return (
       <div className="container-fluid">
         <div
+          className="card-deck d-flex justify-content-between"
+          style={{ paddingTop: "30px" }}
+        >
+          <div
+            className="card text-white bg-success mb-3"
+            style={{ maxWidth: "18rem" }}
+          >
+            <div className="card-header d-flex justify-content-center">
+              <h5>Facilities Open</h5>
+            </div>
+            <div className="card-body">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col">
+                    <h1 className="d-flex justify-content-center row">0</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card text-white bg-warning mb-3"
+            style={{ maxWidth: "18rem" }}
+          >
+            <div className="card-header d-flex justify-content-center">
+              <h5>Facilities Suspended </h5>
+            </div>
+            <div className="card-body">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col">
+                    <h1 className="d-flex justify-content-center row">0</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card text-white bg-danger mb-3"
+            style={{ maxWidth: "18rem" }}
+          >
+            <div className="card-header d-flex justify-content-center">
+              <h5>Facilities Closed</h5>
+            </div>
+            <div className="card-body">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col">
+                    <h1 className="d-flex justify-content-center row">0</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
           className="d-flex justify-content-between"
           style={{ paddingTop: "30px" }}
         >
