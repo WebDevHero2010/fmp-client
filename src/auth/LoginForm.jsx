@@ -67,7 +67,10 @@ const LoginForm = (props) => {
 
   return (
     <div className="LoginApp">
-      <div className="div d-flex justify-content-center">
+      <div
+        className="div d-flex justify-content-center"
+        style={{ paddingTop: "30px" }}
+      >
         <img
           src={LogoDark}
           alt="Food Manager Pro Logo"

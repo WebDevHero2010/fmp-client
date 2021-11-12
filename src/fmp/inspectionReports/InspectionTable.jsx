@@ -70,14 +70,14 @@ class InspectionTable extends Component {
             style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
-              <h5>Inspections Completed</h5>
+              <h5>Inspection Count</h5>
             </div>
             <div className="card-body">
               <div className="card-body">
                 <div className="row">
                   <div className="col">
                     <h1 className="d-flex justify-content-center row">
-                      {this.state.cardOne}
+                      {this.props.cardOne}
                     </h1>
                   </div>
                 </div>

@@ -24,8 +24,13 @@ class InspectionIndex extends Component {
     })
       .then((res) => res.json())
       .then((inspectionData) => {
-        this.setState({ inspection: inspectionData });
-        console.log(this.state.inspection, "from inspection Index");
+        this.setState(
+          {
+            inspection: inspectionData,
+            cardOne: inspectionData.length,
+          },
+          console.log(inspectionData.length)
+        );
       });
   };
 
@@ -42,14 +47,8 @@ class InspectionIndex extends Component {
     this.setState({ inspectionEditActive: false });
   };
 
-  totalInspectionCard = () => {
-    this.setState({ cardOne: this.state.inspection });
-    console.log(this.state.inspection);
-  };
-
   componentDidMount() {
     this.fetchInspections();
-    this.totalInspectionCard();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,6 +75,7 @@ class InspectionIndex extends Component {
               fetchInspections={this.fetchInspections}
               token={this.props.token}
               setInspection={this.setInspection}
+              cardOne={this.state.cardOne}
             />
           </div>
           {this.state.inspectionEditActive ? (
