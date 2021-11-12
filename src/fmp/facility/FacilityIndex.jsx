@@ -4,7 +4,14 @@ import FacilityEdit from "./FacilityEdit";
 class FacilityIndex extends Component {
   constructor(props) {
     super(props);
-    this.state = { facility: [], editActive: false, facilityToEdit: {} };
+    this.state = {
+      facility: [],
+      editActive: false,
+      facilityToEdit: {},
+      facCardOne: "",
+      facCardTwo: "",
+      facCardThree: "",
+    };
   }
 
   fetchFacility = () => {
@@ -17,9 +24,18 @@ class FacilityIndex extends Component {
     })
       .then((res) => res.json())
       .then((facilityData) => {
-        this.setState({ facility: facilityData });
-        // console.log(facilityData, "fetchfrom Index");
-        // console.log(this.state.facility);
+        this.setState({
+          facility: facilityData,
+          facCardOne: facilityData.filter(
+            (facility) => facility.operationStatus === "Open"
+          ).length,
+          facCardTwo: facilityData.filter(
+            (facility) => facility.operationStatus === "Suspended"
+          ).length,
+          facCardThree: facilityData.filter(
+            (facility) => facility.operationStatus === "Closed"
+          ).length,
+        });
       });
   };
 
@@ -66,6 +82,9 @@ class FacilityIndex extends Component {
               fetchFacility={this.fetchFacility}
               token={this.props.token}
               setFacility={this.setFacility}
+              facCardOne={this.state.facCardOne}
+              facCardTwo={this.state.facCardTwo}
+              facCardThree={this.state.facCardThree}
             />
           </div>
           {this.state.editActive ? (

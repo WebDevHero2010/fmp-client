@@ -28,8 +28,11 @@ class InspectionIndex extends Component {
           {
             inspection: inspectionData,
             cardOne: inspectionData.length,
+            cardTwo: inspectionData.filter(
+              (inspection) => inspection.purpose === "Complaint Followup"
+            ).length,
           },
-          console.log(inspectionData.length)
+          console.log(inspectionData)
         );
       });
   };
@@ -76,6 +79,7 @@ class InspectionIndex extends Component {
               token={this.props.token}
               setInspection={this.setInspection}
               cardOne={this.state.cardOne}
+              cardTwo={this.state.cardTwo}
             />
           </div>
           {this.state.inspectionEditActive ? (

@@ -73,7 +73,9 @@ class FacilityTable extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <h1 className="d-flex justify-content-center row">0</h1>
+                    <h1 className="d-flex justify-content-center row">
+                      {this.props.facCardOne}
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -90,7 +92,9 @@ class FacilityTable extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <h1 className="d-flex justify-content-center row">0</h1>
+                    <h1 className="d-flex justify-content-center row">
+                      {this.props.facCardTwo}
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -107,7 +111,9 @@ class FacilityTable extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <h1 className="d-flex justify-content-center row">0</h1>
+                    <h1 className="d-flex justify-content-center row">
+                      {this.props.facCardThree}
+                    </h1>
                   </div>
                 </div>
               </div>
