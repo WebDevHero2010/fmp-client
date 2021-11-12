@@ -8,6 +8,9 @@ class InspectionIndex extends Component {
       inspection: [],
       inspectionEditActive: false,
       inspectionToEdit: {},
+      cardOne: "",
+      cardTwo: "",
+      cardThree: "",
     };
   }
 
@@ -39,8 +42,14 @@ class InspectionIndex extends Component {
     this.setState({ inspectionEditActive: false });
   };
 
+  totalInspectionCard = () => {
+    this.setState({ cardOne: this.state.inspection });
+    console.log(this.state.inspection);
+  };
+
   componentDidMount() {
     this.fetchInspections();
+    this.totalInspectionCard();
   }
 
   componentDidUpdate(prevProps, prevState) {

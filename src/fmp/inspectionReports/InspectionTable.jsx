@@ -76,7 +76,9 @@ class InspectionTable extends Component {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <h1 className="d-flex justify-content-center row">0</h1>
+                    <h1 className="d-flex justify-content-center row">
+                      {this.state.cardOne}
+                    </h1>
                   </div>
                 </div>
               </div>
