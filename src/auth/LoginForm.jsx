@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
-import { ReactSVG } from "react-svg";
+import { Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import SignupModal from "./SignupModal";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "../App.css";
+import LogoDark from "../public/assets/FMP-dark.png";
 
 const LoginForm = (props) => {
   const [errorMsg, seterrorMSG] = useState("");
@@ -67,12 +67,16 @@ const LoginForm = (props) => {
 
   return (
     <div className="LoginApp">
+      <div className="div d-flex justify-content-center">
+        <img
+          src={LogoDark}
+          alt="Food Manager Pro Logo"
+          srcset=""
+          width="250"
+          height="250"
+        />
+      </div>
       <h2 className="LoginHeader">Login</h2>
-      <ReactSVG
-        src="../public/assets/FMP-light.svg"
-        width="300px"
-        height="300px"
-      />
       <Form className="form" onSubmit={formik.handleSubmit}>
         <FormGroup>
           <Label for="exampleEmail">Email Address</Label>
@@ -110,7 +114,7 @@ const LoginForm = (props) => {
           </p>
         </FormGroup>
         <div className="LoginButtonSec">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-warning">
             Login
           </button>
           <button

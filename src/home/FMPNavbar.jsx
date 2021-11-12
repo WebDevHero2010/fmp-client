@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { NavbarText } from "reactstrap";
 import { BrowserRouter as Switch, Route, Router, Link } from "react-router-dom";
-import "../public/assets/FMP-light.png";
+import LogoLight from "../public/assets/FMP-light.png";
 class FMPNavbar extends Component {
   constructor(props) {
     super(props);
@@ -77,15 +77,13 @@ class FMPNavbar extends Component {
         >
           <a className="navbar-brand" href="/">
             <img
-              src="/docs/5.0/assets/brand/bootstrap-logo.svg"
-              alt=""
-              width="30"
-              height="24"
+              src={LogoLight}
+              alt="Food Manager Pro"
+              width="80"
+              height="50"
               class="d-inline-block align-text-top"
             />
-            Food Manager Pro
           </a>
-          <img src="../public/assets/FMP-light.png" alt="" srcset="" />
           <div>{this.loginOptionToggle()}</div>
         </nav>
       </div>

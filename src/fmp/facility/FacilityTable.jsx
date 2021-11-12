@@ -21,6 +21,7 @@ class FacilityTable extends Component {
           <td>
             <button
               className="btn btn-light"
+              style={{ margin: "10px" }}
               onClick={() => {
                 this.props.editFacility(facility);
                 this.props.editOn();
