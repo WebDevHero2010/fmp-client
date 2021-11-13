@@ -8,219 +8,222 @@ class SignupModal extends Component {
     super(props);
     this.state = { suerrorMSG: "" };
   }
+
+  handleSubmit = (fields) => {
+    fetch("http://localhost:3000/user/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        user: {
+          email: fields.email,
+          password: fields.password,
+          firstName: fields.firstName,
+          lastName: fields.lastName,
+          role: fields.role,
+        },
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "User successfully created & added to DB") {
+          this.props.dataUpdate(data);
+        } else {
+          this.setState({
+            suerrorMSG:
+              "user account already exists please try another email or try signing in under login...",
+          });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   render() {
     return (
-      <Modal isOpen={true} centered={true}>
-        <ModalHeader className="d-flex justify-content-center">
-          Signup
-        </ModalHeader>
-        <ModalBody></ModalBody>
-      </Modal>
+      <Formik
+        initialValues={{
+          email: "",
+          firstName: "",
+          lastName: "",
+          password: "",
+          passwordConfirm: "",
+          role: "",
+        }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string()
+            .email("A valid email is required")
+            .required("Email is required"),
+          firstName: Yup.string().required("Firstname is required"),
+          lastName: Yup.string().required("Lastname is required"),
+          password: Yup.string()
+            .matches(
+              /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+              "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+            )
+            .required("Password is Required"),
+          passwordConfirm: Yup.string().oneOf(
+            [Yup.ref("password"), null],
+            "Passwords must match"
+          ),
+          role: Yup.string().required("Please select a Role from the dropdown"),
+        })}
+        onSubmit={(fields, { resetForm }) => {
+          this.handleSubmit(fields);
+          // this.props.signupModalOFF();
+          resetForm({ fields: this.initialValues });
+        }}
+        render={({ errors, status, touched }) => (
+          <div className="container-fluid">
+            <div className="row"></div>
+            <Modal isOpen={true} centered={true}>
+              <ModalHeader className="d-flex justify-content-center">
+                Signup
+              </ModalHeader>
+              <ModalBody>
+                <Form>
+                  <div className="row">
+                    <div className="col">
+                      <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <Field
+                          name="email"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.email && touched.email ? " is-invalid" : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="email"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="firstName">First Name:</label>
+                        <Field
+                          name="firstName"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.firstName && touched.firstName
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="firstName"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="lastName">Last Name:</label>
+                        <Field
+                          name="lastName"
+                          type="text"
+                          className={
+                            "form-control" +
+                            (errors.lastName && touched.lastName
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="lastName"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="role">Role</label>
+                        <Field
+                          name="role"
+                          type="string"
+                          className={
+                            "form-control" +
+                            (errors.role && touched.role ? " is-invalid" : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="role"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="password">Password:</label>
+                        <Field
+                          name="password"
+                          type="password"
+                          className={
+                            "form-control" +
+                            (errors.password && touched.password
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="passwordConfirm">
+                          Confirm password
+                        </label>
+                        <Field
+                          name="passwordConfirm"
+                          type="password"
+                          className={
+                            "form-control" +
+                            (errors.passwordConfirm && touched.passwordConfirm
+                              ? " is-invalid"
+                              : "")
+                          }
+                        />
+                        <ErrorMessage
+                          name="passwordConfirm"
+                          component="div"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="d-flex justify-content-between">
+                      <button type="submit" className="btn btn-outline-success">
+                        sign up!
+                      </button>
+                      <button
+                        type="reset"
+                        className="btn btn-outline-danger"
+                        onClick={() => {
+                          this.props.signupModalOFF();
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </Form>
+                <br />
+                {this.state.suerrorMSG === "" ? (
+                  ""
+                ) : (
+                  <div className="alert alert-danger" role="alert">
+                    {this.state.suerrorMSG}
+                  </div>
+                )}
+              </ModalBody>
+            </Modal>
+          </div>
+        )}
+      />
     );
   }
 }
 
 export default SignupModal;
-
-// const SignupModal = (props) => {
-//   const [suerrorMSG, suSeterrorMSG] = useState("");
-
-//   const formik = useFormik({
-//     initialValues: {
-//       firstName: "",
-//       lastName: "",
-//       email: "",
-//       role: "user",
-//       password: "",
-//       passwordConfirmation: "",
-//     },
-//     validationSchema: Yup.object({
-//       firstName: Yup.string()
-//         .min(4, "Must be more than 4 characters")
-//         .max(15, "Must be 15 characters or less")
-//         .required("Required"),
-//       lastName: Yup.string()
-//         .min(4, "Must be more than 4 characters")
-//         .max(15, "Must be 15 characters or less")
-//         .required("Required"),
-//       email: Yup.string().email("Invalid email address").required("Required"),
-//       role: Yup.string().required("Required"),
-//       password: Yup.string()
-//         .required("Please Enter your password")
-//         .matches(
-//           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-//           "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character(no dashes or underscores)"
-//         ),
-//       passwordConfirmation: Yup.string().test(
-//         "passwords-match",
-//         "Passwords must match",
-//         function (value) {
-//           return this.parent.password === value;
-//         }
-//       ),
-//     }),
-
-//     onSubmit: (values) => {
-//       handleSignUp();
-//     },
-//   });
-
-//   //useState for Alert element
-//   const [visible, setVisible] = useState(false);
-
-//   let handleSignUp = (values) => {
-//     fetch(`http://localhost:3000/user/signup`, {
-//       method: "POST",
-//       body: JSON.stringify({
-//         user: {
-//           email: formik.values.email,
-//           firstName: formik.values.firstName,
-//           lastName: formik.values.lastName,
-//           password: formik.values.password,
-//           role: formik.values.role,
-//         },
-//       }),
-//       headers: new Headers({
-//         "Content-Type": "application/json",
-//       }),
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data.message === "User successfully created & added to DB") {
-//           props.updateToken(data.sessionToken);
-//           console.log("User successfully created");
-//         } else {
-//           suSeterrorMSG(
-//             "user account already exists please try another email or try signing in under login..."
-//           );
-//         }
-//       })
-//       .catch((error) => console.log(error));
-//     //Make Alert for Errors Appear Dynamically
-//     suerrorMSG != "" ? setVisible(true) : setVisible(true);
-//   };
-//   return (
-//     <Modal isOpen={true} centered={true}>
-//       <ModalHeader className="d-flex justify-content-center">
-//         Signup
-//       </ModalHeader>
-//       <ModalBody>
-//         <Form onSubmit={formik.handleSubmit} className="signup">
-//           <FormGroup>
-//             <Label htmlFor="firstName">First Name:</Label>
-//             <Input
-//               type="text"
-//               onChange={formik.handleChange}
-//               name="firstName"
-//               value={formik.values.firstName}
-//             />
-//             <p style={{ color: "red" }}>
-//               {formik.touched.firstName && formik.errors.firstName ? (
-//                 <div>{formik.errors.firstName}</div>
-//               ) : null}
-//             </p>
-//           </FormGroup>
-//           <FormGroup>
-//             <Label htmlFor="lastName">Last Name:</Label>
-//             <Input
-//               type="text"
-//               onChange={formik.handleChange}
-//               name="lastName"
-//               value={formik.values.lastName}
-//             />
-//             <p style={{ color: "red" }}>
-//               {formik.touched.lastName && formik.errors.lastName ? (
-//                 <div>{formik.errors.lastName}</div>
-//               ) : null}
-//             </p>
-//           </FormGroup>
-//           <FormGroup>
-//             <Label htmlFor="email">Email:</Label>
-//             <Input
-//               onChange={formik.handleChange}
-//               name="email"
-//               onBlur={formik.handleBlur}
-//               value={formik.values.email}
-//             />
-//             <p style={{ color: "red" }}>
-//               {formik.touched.email && formik.errors.email ? (
-//                 <div>{formik.errors.email}</div>
-//               ) : null}
-//             </p>
-//           </FormGroup>
-//           <FormGroup>
-//             <Label htmlFor="role">Role:</Label>
-//             <Input
-//               onChange={formik.handleChange}
-//               name="role"
-//               type="select"
-//               onBlur={formik.handleBlur}
-//               value={formik.values.role}
-//             >
-//               <option value="user">user</option>
-//               <option value="admin">admin</option>
-//             </Input>
-//             <p style={{ color: "red" }}>
-//               {formik.touched.role && formik.errors.role ? (
-//                 <div>{formik.errors.role}</div>
-//               ) : null}
-//             </p>
-//           </FormGroup>
-//           <FormGroup>
-//             <Label htmlFor="password">Password:</Label>
-//             <Input
-//               input
-//               type="password"
-//               onChange={formik.handleChange}
-//               name="password"
-//               onBlur={formik.handleBlur}
-//               value={formik.values.password}
-//             />
-//             <p style={{ color: "red" }}>
-//               {formik.touched.password && formik.errors.password ? (
-//                 <div>{formik.errors.password}</div>
-//               ) : null}
-//             </p>
-//             <FormGroup>
-//               <Label htmlFor="passwordConfirmation">Confirm Password:</Label>
-//               <Input
-//                 input
-//                 type="password"
-//                 name="passwordConfirmation"
-//                 onBlur={formik.handleBlur}
-//                 onChange={formik.handleChange}
-//                 value={formik.values.passwordConfirmation}
-//               ></Input>
-//               <p style={{ color: "red" }}>
-//                 {formik.touched.passwordConfirmation &&
-//                 formik.errors.passwordConfirmation ? (
-//                   <div>{formik.errors.passwordConfirmation}</div>
-//                 ) : null}
-//               </p>
-//             </FormGroup>
-//             <br></br>
-//             <br></br>
-//             <div className="d-flex justify-content-between">
-//               <Button className="submitBTN" type="submit">
-//                 Submit
-//               </Button>
-//               <Button
-//                 className="signupBTN"
-//                 color="link"
-//                 onClick={props.signupModalOFF}
-//               >
-//                 Exit
-//               </Button>
-//             </div>
-//             <br />
-//             <Alert color="danger" isOpen={visible}>
-//               {suerrorMSG}
-//             </Alert>
-//           </FormGroup>
-//         </Form>
-//       </ModalBody>
-//     </Modal>
-//   );
-// };
-
-// export default SignupModal;
