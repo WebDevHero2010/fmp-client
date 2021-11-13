@@ -126,7 +126,7 @@ class FacilityTable extends Component {
           style={{ paddingTop: "30px" }}
         >
           <h3>Facilities</h3>
-          <div className="d-flex">
+          <div className="d-flex ">
             <FacilityCreate
               FacilityTable={FacilityTable}
               token={this.props.token}

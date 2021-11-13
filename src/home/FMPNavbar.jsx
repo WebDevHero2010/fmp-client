@@ -2,6 +2,7 @@ import { Component } from "react";
 import { NavbarText } from "reactstrap";
 import { BrowserRouter as Switch, Route, Router, Link } from "react-router-dom";
 import LogoLight from "../public/assets/FMP-light.png";
+var _ = require("lodash");
 class FMPNavbar extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +26,8 @@ class FMPNavbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <NavbarText>
-              Hello {this.props.sessionUser.firstName}{" "}
-              {this.props.sessionUser.lastName}
+              Hello {_.capitalize(this.props.sessionUser.firstName)}{" "}
+              {_.capitalize(this.props.sessionUser.lastName)}
             </NavbarText>
             <li className="nav-item dropdown">
               <a

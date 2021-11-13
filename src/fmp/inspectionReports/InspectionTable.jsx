@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InspectionCreate from "./InspectionCreate";
+var _ = require("lodash");
 
 class InspectionTable extends Component {
   constructor(props) {
@@ -21,8 +22,8 @@ class InspectionTable extends Component {
           <td>{inspection.releaseDate}</td>
           <td>{inspection.violationFindings}</td>
           <td>{inspection.toBeCorrectedBy}</td>
-          <td>{inspection.facility.facilityName}</td>
-          <td>{inspection.createdAt}</td>
+          <td>{_.capitalize(inspection.facility.facilityName)}</td>
+          <td>{Date(inspection.createdAt)}</td>
           <td>
             <button
               className="btn btn-light"
@@ -63,7 +64,7 @@ class InspectionTable extends Component {
     return (
       <div className="container-fluid">
         <div
-          className="card-deck d-flex justify-content-between"
+          className="card-deck d-flex justify-content-center"
           style={{ paddingTop: "30px" }}
         >
           <div
@@ -99,23 +100,6 @@ class InspectionTable extends Component {
                     <h1 className="d-flex justify-content-center row">
                       {this.props.cardTwo}
                     </h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="card text-white bg-warning mb-3"
-            style={{ maxWidth: "25rem" }}
-          >
-            <div className="card-header d-flex justify-content-center">
-              <h5>Inspections In Progress</h5>
-            </div>
-            <div className="card-body">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col">
-                    <h1 className="d-flex justify-content-center row">0</h1>
                   </div>
                 </div>
               </div>
