@@ -271,6 +271,7 @@ class FacilityCreate extends Component {
                         </Field>
                         <ErrorMessage
                           name="menuType"
+                          type="string"
                           component="div"
                           className="invalid-feedback"
                         />
@@ -281,6 +282,7 @@ class FacilityCreate extends Component {
                         </label>
                         <Field
                           name="operationStatus"
+                          as="select"
                           type="string"
                           className={
                             "form-control" +
@@ -288,7 +290,15 @@ class FacilityCreate extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        >
+                          <option></option>
+                          <option value="Open">Open</option>
+                          <option value="Closed">Closed</option>
+                          <option value="Suspended">Suspended</option>
+                          <option value="Under Construction">
+                            Under Construction
+                          </option>
+                        </Field>
                         <ErrorMessage
                           name="operationStatus"
                           component="div"

@@ -132,7 +132,7 @@ class FacilityTable extends Component {
               token={this.props.token}
               setFacility={this.props.setFacility}
             />
-            <div>
+            <div className="d-flex">
               <FacilityPDF />
             </div>
           </div>
