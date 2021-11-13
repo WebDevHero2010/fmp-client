@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InspectionCreate from "./InspectionCreate";
+
 class InspectionTable extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class InspectionTable extends Component {
           <td>{inspection.releaseDate}</td>
           <td>{inspection.violationFindings}</td>
           <td>{inspection.toBeCorrectedBy}</td>
-          <td>{inspection?.facility?.facilityName}</td>
+          <td>{inspection.facility.facilityName}</td>
           <td>{inspection.createdAt}</td>
           <td>
             <button
@@ -135,7 +136,10 @@ class InspectionTable extends Component {
           </div>
         </div>
         <div className="table-responsive">
-          <table className="table table-striped table-hover .table-sm">
+          <table
+            className="table table-striped table-hover .table-sm"
+            id="inspectionTable"
+          >
             <thead className="thead-dark">
               <tr>
                 <th scope={"col"}>Inspection ID#:</th>
@@ -152,6 +156,7 @@ class InspectionTable extends Component {
             <tbody>{this.inspectionMapper()}</tbody>
           </table>
         </div>
+        <div></div>
       </div>
     );
   }

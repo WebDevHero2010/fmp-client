@@ -1,5 +1,6 @@
 import { Component } from "react";
 import FacilityCreate from "./FacilityCreate";
+import FacilityPDF from "./facilityPDF";
 class FacilityTable extends Component {
   constructor(props) {
     super(props);
@@ -125,16 +126,22 @@ class FacilityTable extends Component {
           style={{ paddingTop: "30px" }}
         >
           <h3>Facilities</h3>
-          <div>
+          <div className="d-flex">
             <FacilityCreate
               FacilityTable={FacilityTable}
               token={this.props.token}
               setFacility={this.props.setFacility}
             />
+            <div>
+              <FacilityPDF />
+            </div>
           </div>
         </div>
         <div className="table-responsive">
-          <table className="table table-striped table-hover .table-sm">
+          <table
+            className="table table-striped table-hover .table-sm"
+            id="facilityTable"
+          >
             <thead className="thead-dark">
               <tr>
                 <th scope={"col"}>Facility#</th>
