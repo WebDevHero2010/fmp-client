@@ -129,7 +129,7 @@ class InspectionEdit extends Component {
                         <label htmlFor="followUpDate">Followup Date:</label>
                         <Field
                           name="followUpDate"
-                          type="text"
+                          type="date"
                           className={
                             "form-control" +
                             (errors.followUpDate && touched.followUpDate
@@ -147,7 +147,7 @@ class InspectionEdit extends Component {
                         <label htmlFor="releaseDate">Release Date:</label>
                         <Field
                           name="releaseDate"
-                          type="text"
+                          type="date"
                           className={
                             "form-control" +
                             (errors.releaseDate && touched.releaseDate
@@ -167,6 +167,7 @@ class InspectionEdit extends Component {
                         </label>
                         <Field
                           name="violationFindings"
+                          as="textarea"
                           type="string"
                           className={
                             "form-control" +

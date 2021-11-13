@@ -2,8 +2,53 @@ import { Component } from "react";
 class AdminDashIndex extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userList: [],
+      adminCardOne: "",
+      adminCardTwo: "",
+      adminCardThree: "",
+    };
   }
+
+  componentDidMount() {
+    this.fetchUsers();
+    this.userMapper();
+  }
+
+  fetchUsers = () => {
+    fetch(`http://localhost:3000/user/userlist`, {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.token,
+      }),
+    })
+      .then((res) => res.json())
+      .then((userListData) => {
+        this.setState({
+          userList: userListData,
+          adminCardOne: userListData.length,
+          adminCardTwo: userListData.filter((user) => user.role === "admin")
+            .length,
+          adminCardThree: userListData.filter((user) => user.role === "user")
+            .length,
+        });
+      });
+  };
+
+  userMapper = () => {
+    return this.state.userList.map((user, index) => {
+      return (
+        <tr key={index}>
+          <th>{user.id}</th>
+          <td>{user.email}</td>
+          <td>{user.firstName}</td>
+          <td>{user.lastName}</td>
+          <td>{user.role}</td>
+        </tr>
+      );
+    });
+  };
   render() {
     return (
       <div className="container-fluid" style={{ paddingTop: "30px" }}>
@@ -19,52 +64,57 @@ class AdminDashIndex extends Component {
               className="card text-white bg-success mb-3"
               style={{ maxWidth: "25rem" }}
             >
-              <div className="card-header">Header</div>
+              <div className="card-header d-flex justify-content-center">
+                <h5>Registered Users</h5>
+              </div>
               <div className="card-body">
-                <h5 className="card-title">Primary card title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col">
+                      <h1 className="d-flex justify-content-center row">
+                        {this.state.adminCardOne}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="card text-white bg-info mb-3"
+              style={{ maxWidth: "25rem" }}
+            >
+              <div className="card-header d-flex justify-content-center">
+                <h5> Admin User Count</h5>
+              </div>
+              <div className="card-body">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col">
+                      <h1 className="d-flex justify-content-center row">
+                        {this.state.adminCardTwo}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div
               className="card text-white bg-warning mb-3"
               style={{ maxWidth: "25rem" }}
             >
-              <div className="card-header">Header</div>
-              <div className="card-body">
-                <h5 className="card-title">Primary card title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+              <div className="card-header d-flex justify-content-center">
+                <h5>Standard User Count</h5>
               </div>
-            </div>
-            <div
-              className="card text-white bg-primary mb-3"
-              style={{ maxWidth: "25rem" }}
-            >
-              <div className="card-header">Header</div>
               <div className="card-body">
-                <h5 className="card-title">Primary card title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-            <div
-              className="card text-white bg-danger mb-3"
-              style={{ maxWidth: "25rem" }}
-            >
-              <div className="card-header">Header</div>
-              <div className="card-body">
-                <h5 className="card-title">Primary card title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col">
+                      <h1 className="d-flex justify-content-center row">
+                        {this.state.adminCardThree}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -168,6 +218,28 @@ class AdminDashIndex extends Component {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div>
+          <div className="d-flex justify-content-center">
+            <h3>Current User List</h3>
+          </div>
+          <div className="table-responsive">
+            <table
+              className="table table-striped table-hover .table-sm"
+              id="userTable"
+            >
+              <thead className="thead-dark">
+                <tr>
+                  <th scope={"col"}>UserID#</th>
+                  <th scope={"col"}>Email:</th>
+                  <th scope={"col"}>First Name:</th>
+                  <th scope={"col"}>Last Name:</th>
+                  <th scope={"col"}>Role:</th>
+                </tr>
+              </thead>
+              <tbody>{this.userMapper()}</tbody>
+            </table>
           </div>
         </div>
       </div>

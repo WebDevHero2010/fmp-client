@@ -139,13 +139,18 @@ class SignupModal extends Component {
                       <div className="form-group">
                         <label htmlFor="role">Role</label>
                         <Field
+                          as="select"
                           name="role"
                           type="string"
                           className={
                             "form-control" +
                             (errors.role && touched.role ? " is-invalid" : "")
                           }
-                        />
+                        >
+                          <option value=""></option>
+                          <option value="user">user</option>
+                          <option value="admin">admin</option>
+                        </Field>
                         <ErrorMessage
                           name="role"
                           component="div"

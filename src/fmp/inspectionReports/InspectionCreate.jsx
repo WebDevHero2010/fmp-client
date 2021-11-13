@@ -2,11 +2,18 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+// import { Editor, EditorState } from "draft-js";
+// import "draft-js/dist/Draft.css";
 
 class InspectionCreate extends Component {
   constructor(props) {
     super(props);
-    this.state = { inspectionModalCreate: false, facilityDropDown: [] };
+    this.state = {
+      inspectionModalCreate: false,
+      facilityDropDown: [],
+      // editorState: EditorState.createEmpty(),
+    };
+    // this.onChange = (editorState) => this.setState({ editorState });
   }
 
   toggle = () => {
@@ -155,7 +162,8 @@ class InspectionCreate extends Component {
                         <label htmlFor="followUpDate">Followup Date:</label>
                         <Field
                           name="followUpDate"
-                          type="text"
+                          type="date"
+                          placeholder="Pick a date"
                           className={
                             "form-control" +
                             (errors.followUpDate && touched.followUpDate
@@ -173,7 +181,8 @@ class InspectionCreate extends Component {
                         <label htmlFor="releaseDate">Release Date:</label>
                         <Field
                           name="releaseDate"
-                          type="text"
+                          placeholder="Pick a date"
+                          type="date"
                           className={
                             "form-control" +
                             (errors.releaseDate && touched.releaseDate
@@ -193,6 +202,7 @@ class InspectionCreate extends Component {
                         </label>
                         <Field
                           name="violationFindings"
+                          as="textarea"
                           type="string"
                           className={
                             "form-control" +
