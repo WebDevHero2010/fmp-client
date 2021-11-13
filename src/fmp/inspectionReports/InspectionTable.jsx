@@ -64,7 +64,7 @@ class InspectionTable extends Component {
     return (
       <div className="container-fluid">
         <div
-          className="card-deck d-flex justify-content-center"
+          className="card-deck d-flex justify-content-between"
           style={{ paddingTop: "30px" }}
         >
           <div

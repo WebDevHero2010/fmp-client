@@ -119,12 +119,12 @@ class LoginForm extends Component {
               </div>
               <div>
                 <div className="d-flex justify-content-between">
-                  <button type="submit" className="btn btn-outline-success">
+                  <button type="submit" className="btn btn-warning">
                     Login
                   </button>
                   <button
                     type="reset"
-                    className="btn btn-outline-danger"
+                    className="btn btn-link"
                     onClick={() => {
                       this.signupModalON();
                     }}
