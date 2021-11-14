@@ -5,7 +5,7 @@ switch (window.location.hostname) {
   case "127.0.0.1":
     APIURL = "http://localhost:3000";
     break;
-  case "https://fmp-2021client.herokuapp.com/":
+  case "fmp-2021client.herokuapp.com/":
     APIURL = "https://fmp-server2021.herokuapp.com";
 }
 
