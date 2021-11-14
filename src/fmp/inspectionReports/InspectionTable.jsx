@@ -22,7 +22,7 @@ class InspectionTable extends Component {
           <td>{inspection.releaseDate}</td>
           <td>{inspection.violationFindings}</td>
           <td>{inspection.toBeCorrectedBy}</td>
-          <td>{_.capitalize(inspection.facility.facilityName)}</td>
+          <td>{_.capitalize(inspection.facility?.facilityName)}</td>
           <td>{Date(inspection.createdAt)}</td>
           <td>
             <button

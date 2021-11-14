@@ -63,6 +63,15 @@ class FacilityIndex extends Component {
     if (prevState.facility.length !== this.state.facility.length) {
       this.setState({
         facility: this.state.facility.sort((a, b) => b.id - a.id),
+        facCardOne: this.state.facility.filter(
+          (facility) => facility.operationStatus === "Open"
+        ).length,
+        facCardTwo: this.state.facility.filter(
+          (facility) => facility.operationStatus === "Suspended"
+        ).length,
+        facCardThree: this.state.facility.filter(
+          (facility) => facility.operationStatus === "Closed"
+        ).length,
       });
     }
   }

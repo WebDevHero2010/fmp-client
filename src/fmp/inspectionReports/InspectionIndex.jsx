@@ -30,7 +30,7 @@ class InspectionIndex extends Component {
             inspection: inspectionData,
             cardOne: inspectionData.length,
             cardTwo: inspectionData.filter(
-              (inspection) => inspection.purpose === "Complaint Followup"
+              (inspection) => inspection.purpose === "Complaint"
             ).length,
           },
           console.log(inspectionData)
@@ -59,6 +59,10 @@ class InspectionIndex extends Component {
     if (prevState.inspection.length !== this.state.inspection.length) {
       this.setState({
         inspection: this.state.inspection.sort((a, b) => b.id - a.id),
+        cardOne: this.state.inspection.length,
+        cardTwo: this.state.inspection.filter(
+          (inspection) => inspection.purpose === "Complaint"
+        ).length,
       });
     }
   }

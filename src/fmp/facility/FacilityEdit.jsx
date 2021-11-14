@@ -50,7 +50,7 @@ class FacilityEdit extends Component {
           ownerAddress: fields.ownerAddress,
           ownerCity: fields.ownerCity,
           ownerState: fields.ownerState,
-          ownerZipcode: fields.ownerState,
+          ownerZipcode: fields.ownerZipcode,
         },
       }),
       headers: new Headers({
@@ -126,7 +126,7 @@ class FacilityEdit extends Component {
         onSubmit={(fields) => {
           this.facilityUpdate(fields);
           this.editToggle();
-          // console.log(fields);
+          console.log(fields, "from Formik");
           // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
         }}
         render={({ errors, status, touched }) => (
@@ -173,7 +173,7 @@ class FacilityEdit extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        ></Field>
                         <ErrorMessage
                           name="address"
                           component="div"
@@ -184,12 +184,66 @@ class FacilityEdit extends Component {
                         <label htmlFor="state">Facility State</label>
                         <Field
                           name="state"
+                          as="select"
                           type="text"
                           className={
                             "form-control" +
                             (errors.state && touched.state ? " is-invalid" : "")
                           }
-                        />
+                        >
+                          <option value=""></option>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="DC">District Of Columbia</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                        </Field>
                         <ErrorMessage
                           name="state"
                           component="div"
@@ -242,12 +296,12 @@ class FacilityEdit extends Component {
                           type="string"
                           className={
                             "form-control" +
-                            (errors.facilityType && touched.facilityTyAdd
+                            (errors.facilityType && touched.facilityType
                               ? " is-invalid"
                               : "")
                           }
                         >
-                          <option value=""></option>
+                          <option></option>
                           <option value="Restaurant">Restaurant</option>
                           <option value="Tavern">Tavern</option>
                           <option value="Retail">Retail</option>
@@ -306,11 +360,24 @@ class FacilityEdit extends Component {
                           }
                         >
                           <option></option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
+                          <option value="1">
+                            1-Pre-packaged non-potentially hazardous foods
+                          </option>
+                          <option value="2">2-Limited Menu</option>
+                          <option value="3">
+                            3-Extensive Handling of raw ingrediants.
+                          </option>
+                          <option value="4">
+                            4-Food processes include advanced prep and category
+                            would include facilities whose service population is
+                            highly susceptible
+                          </option>
+                          <option value="5">
+                            5-Extensive handling of raw ingrediants. Food
+                            processing at the retail level, e.g smoking and
+                            curing, reduced oxygen packaging for extended
+                            shelf-life.
+                          </option>
                         </Field>
                         <ErrorMessage
                           name="menuType"
@@ -324,6 +391,7 @@ class FacilityEdit extends Component {
                         </label>
                         <Field
                           name="operationStatus"
+                          as="select"
                           type="string"
                           className={
                             "form-control" +
@@ -331,7 +399,15 @@ class FacilityEdit extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        >
+                          <option></option>
+                          <option value="Open">Open</option>
+                          <option value="Closed">Closed</option>
+                          <option value="Suspended">Suspended</option>
+                          <option value="Under Construction">
+                            Under Construction
+                          </option>
+                        </Field>
                         <ErrorMessage
                           name="operationStatus"
                           component="div"
@@ -458,6 +534,7 @@ class FacilityEdit extends Component {
                         <label htmlFor="ownerState">Owner's State</label>
                         <Field
                           name="ownerState"
+                          as="select"
                           type="string"
                           className={
                             "form-control" +
@@ -465,7 +542,60 @@ class FacilityEdit extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        >
+                          <option value=""></option>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="DC">District Of Columbia</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                        </Field>
                         <ErrorMessage
                           name="ownerState"
                           component="div"
