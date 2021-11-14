@@ -112,6 +112,7 @@ class InspectionEdit extends Component {
                         <label htmlFor="purpose">Purpose</label>
                         <Field
                           name="purpose"
+                          as="select"
                           type="text"
                           className={
                             "form-control" +
@@ -119,7 +120,18 @@ class InspectionEdit extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        >
+                          <option value=""></option>
+                          <option value="Routine">Routine</option>
+                          <option value="Follow-up">Follow-up</option>
+                          <option value="Complaint">Complaint</option>
+                          <option value="Pre-Operational">
+                            Pre-Operational
+                          </option>
+                          <option value="Temporary">Temporary</option>
+                          <option value="HACCP">HACCP</option>
+                          <option value="Other">Other</option>
+                        </Field>
                         <ErrorMessage
                           name="purpose"
                           component="div"

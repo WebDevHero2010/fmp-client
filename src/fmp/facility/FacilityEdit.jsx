@@ -238,6 +238,7 @@ class FacilityEdit extends Component {
                         <label htmlFor="facilityType">Facility Type</label>
                         <Field
                           name="facilityType"
+                          as="select"
                           type="string"
                           className={
                             "form-control" +
@@ -245,7 +246,46 @@ class FacilityEdit extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        ></Field>
+                        >
+                          <option value=""></option>
+                          <option value="Restaurant">Restaurant</option>
+                          <option value="Tavern">Tavern</option>
+                          <option value="Retail">Retail</option>
+                          <option value="Restaurant/Tavern">
+                            Restaurant/Tavern
+                          </option>
+                          <option value="Vender Operation">
+                            Vender Operation (PHF)
+                          </option>
+                          <option value="Seasonal Food Service">
+                            Seasnonal Food Service
+                          </option>
+                          <option value="Non-Profit Organization">
+                            Non-Profit Organization
+                          </option>
+                          <option value="Bed and Breakfast">
+                            Bed and Breakfast
+                          </option>
+                          <option value="Concession Stand">
+                            Concession Stand
+                          </option>
+                          <option value="Vending Operation - Micro Markets">
+                            Vending Operation - Micro Markets
+                          </option>
+                          <option value="Mobile Food Sales Truck">
+                            Mobile Food Sales Truck
+                          </option>
+                          <option value="Concession Stand">
+                            Concession Stand
+                          </option>
+                          <option value="Market">Market</option>
+                          <option value="School Cafeteria">
+                            School Cafeteria
+                          </option>
+                          <option value="Non-Profit Meal Site">
+                            Non-Profit Meal Site
+                          </option>
+                        </Field>
                         <ErrorMessage
                           name="facilityType"
                           component="div"

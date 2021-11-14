@@ -154,6 +154,7 @@ class InspectionCreate extends Component {
                               : "")
                           }
                         >
+                          <option value=""></option>
                           <option value="Routine">Routine</option>
                           <option value="Follow-up">Follow-up</option>
                           <option value="Complaint">Complaint</option>
