@@ -144,6 +144,7 @@ class InspectionCreate extends Component {
                       <div className="form-group">
                         <label htmlFor="purpose">Purpose</label>
                         <Field
+                          as="select"
                           name="purpose"
                           type="text"
                           className={
@@ -152,7 +153,17 @@ class InspectionCreate extends Component {
                               ? " is-invalid"
                               : "")
                           }
-                        />
+                        >
+                          <option value="Routine">Routine</option>
+                          <option value="Follow-up">Follow-up</option>
+                          <option value="Complaint">Complaint</option>
+                          <option value="Pre-Operational">
+                            Pre-Operational
+                          </option>
+                          <option value="Temporary">Temporary</option>
+                          <option value="HACCP">HACCP</option>
+                          <option value="Other">Other</option>
+                        </Field>
                         <ErrorMessage
                           name="purpose"
                           component="div"
