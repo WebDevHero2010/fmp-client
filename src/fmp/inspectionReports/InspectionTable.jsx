@@ -87,7 +87,7 @@ class InspectionTable extends Component {
             </div>
           </div>
           <div
-            className="card text-white bg-success mb-3"
+            className="card text-white bg-warning mb-3"
             style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
