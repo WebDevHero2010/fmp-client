@@ -32,6 +32,9 @@ class InspectionIndex extends Component {
             cardTwo: inspectionData.filter(
               (inspection) => inspection.purpose === "Complaint"
             ).length,
+            cardThree: this.state.inspection.filter(
+              (inspection) => inspection.purpose === "Pre-Operational"
+            ).length,
           },
           console.log(inspectionData)
         );
@@ -85,6 +88,7 @@ class InspectionIndex extends Component {
               setInspection={this.setInspection}
               cardOne={this.state.cardOne}
               cardTwo={this.state.cardTwo}
+              cardThree={this.state.cardThree}
             />
           </div>
           {this.state.inspectionEditActive ? (

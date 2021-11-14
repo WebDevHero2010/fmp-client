@@ -87,11 +87,30 @@ class InspectionTable extends Component {
             </div>
           </div>
           <div
+            className="card text-white bg-success mb-3"
+            style={{ maxWidth: "25rem" }}
+          >
+            <div className="card-header d-flex justify-content-center">
+              <h5>Pre-Operational</h5>
+            </div>
+            <div className="card-body">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col">
+                    <h1 className="d-flex justify-content-center row">
+                      {this.props.cardThree}
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
             className="card text-white bg-info mb-3"
             style={{ maxWidth: "25rem" }}
           >
             <div className="card-header d-flex justify-content-center">
-              <h5>Inspections Created by Complaint</h5>
+              <h5>Complaint</h5>
             </div>
             <div className="card-body">
               <div className="card-body">
