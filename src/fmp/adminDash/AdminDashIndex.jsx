@@ -1,4 +1,5 @@
 import { Component } from "react";
+import APIURL from "../../helpers/environment";
 class AdminDashIndex extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ class AdminDashIndex extends Component {
   }
 
   fetchUsers = () => {
-    fetch(`http://localhost:3000/user/userlist`, {
+    fetch(`${APIURL}/user/userlist`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

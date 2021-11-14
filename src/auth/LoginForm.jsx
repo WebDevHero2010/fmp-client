@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import SignupModal from "./SignupModal";
 import "../App.css";
 import LogoDark from "../public/assets/FMP-dark.png";
+import APIURL from "../helpers/environment";
+
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class LoginForm extends Component {
   };
 
   handleLogin = (fields) => {
-    fetch(`http://localhost:3000/user/login`, {
+    fetch(`${APIURL}/user/login`, {
       method: "POST",
       body: JSON.stringify({
         user: { email: fields.email, password: fields.password },

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import APIURL from "../helpers/environment";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 class SignupModal extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class SignupModal extends Component {
   }
 
   handleSubmit = (fields) => {
-    fetch("http://localhost:3000/user/signup", {
+    fetch(`${APIURL}/user/signup`, {
       method: "POST",
       body: JSON.stringify({
         user: {

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import FacilityTable from "./FacilityTable";
 import FacilityEdit from "./FacilityEdit";
+import APIURL from "../../helpers/environment";
 class FacilityIndex extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,7 @@ class FacilityIndex extends Component {
   }
 
   fetchFacility = () => {
-    fetch(`http://localhost:3000/facility/`, {
+    fetch(`${APIURL}/facility/`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

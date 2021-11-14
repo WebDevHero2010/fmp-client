@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import APIURL from "../../helpers/environment";
 class FacilityCreate extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class FacilityCreate extends Component {
   };
 
   fetchPostFacility = (fields) => {
-    fetch(`http://localhost:3000/facility/create`, {
+    fetch(`${APIURL}/facility/create`, {
       method: "POST",
       body: JSON.stringify({
         facility: {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InspectionCreate from "./InspectionCreate";
+import APIURL from "../../helpers/environment";
 var _ = require("lodash");
-
 class InspectionTable extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,7 @@ class InspectionTable extends Component {
   };
 
   deleteInspectionReport = (inspection) => {
-    fetch(`http://localhost:3000/inspectionreports/delete/${inspection.id}`, {
+    fetch(`${APIURL}/inspectionreports/delete/${inspection.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import * as Yup from "yup";
+import APIURL from "../../helpers/environment";
 
 class FacilityEdit extends Component {
   constructor(props) {
@@ -30,36 +31,33 @@ class FacilityEdit extends Component {
   facilityUpdate = (fields) => {
     // e.preventDefault();
     // console.log(fields, "facilityUpdate from facilityEdit");
-    fetch(
-      `http://localhost:3000/facility/update/${this.props.facilityToEdit.id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          facility: {
-            facilityName: fields.facilityName,
-            address: fields.address,
-            state: fields.state,
-            zipcode: fields.zipcode,
-            phonenumber: fields.phonenumber,
-            facilityType: fields.facilityType,
-            menuType: fields.menuType,
-            operationStatus: fields.operationStatus,
-            ownerEmail: fields.ownerEmail,
-            ownerFirstName: fields.ownerFirstName,
-            ownerLastName: fields.ownerLastName,
-            ownerPhoneNumber: fields.ownerPhoneNumber,
-            ownerAddress: fields.ownerAddress,
-            ownerCity: fields.ownerCity,
-            ownerState: fields.ownerState,
-            ownerZipcode: fields.ownerState,
-          },
-        }),
-        headers: new Headers({
-          "Content-Type": "application/json",
-          Authorization: this.props.token,
-        }),
-      }
-    ).then((res) => {
+    fetch(`${APIURL}/facility/update/${this.props.facilityToEdit.id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        facility: {
+          facilityName: fields.facilityName,
+          address: fields.address,
+          state: fields.state,
+          zipcode: fields.zipcode,
+          phonenumber: fields.phonenumber,
+          facilityType: fields.facilityType,
+          menuType: fields.menuType,
+          operationStatus: fields.operationStatus,
+          ownerEmail: fields.ownerEmail,
+          ownerFirstName: fields.ownerFirstName,
+          ownerLastName: fields.ownerLastName,
+          ownerPhoneNumber: fields.ownerPhoneNumber,
+          ownerAddress: fields.ownerAddress,
+          ownerCity: fields.ownerCity,
+          ownerState: fields.ownerState,
+          ownerZipcode: fields.ownerState,
+        },
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.token,
+      }),
+    }).then((res) => {
       this.props.fetchFacility();
       this.props.editOff();
     });

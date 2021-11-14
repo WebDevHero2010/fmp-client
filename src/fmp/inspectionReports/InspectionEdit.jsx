@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import * as Yup from "yup";
+import APIURL from "../../helpers/environment";
 
 class InspectionEdit extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class InspectionEdit extends Component {
 
   inspectionUpdate = (fields) => {
     fetch(
-      `http://localhost:3000/inspectionreports/update/${this.props.inspectionToEdit.id}`,
+      `${APIURL}/inspectionreports/update/${this.props.inspectionToEdit.id}`,
       {
         method: "PUT",
         body: JSON.stringify({

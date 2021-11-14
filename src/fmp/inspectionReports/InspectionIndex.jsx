@@ -1,6 +1,7 @@
 import { Component } from "react";
 import InspectionTable from "./InspectionTable";
 import InspectionEdit from "./InspectionEdit";
+import APIURL from "../../helpers/environment";
 class InspectionIndex extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,7 @@ class InspectionIndex extends Component {
   }
 
   fetchInspections = () => {
-    fetch(`http://localhost:3000/inspectionreports/`, {
+    fetch(`${APIURL}/inspectionreports/`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

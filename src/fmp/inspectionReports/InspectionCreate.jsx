@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import APIURL from "../../helpers/environment";
 // import { Editor, EditorState } from "draft-js";
 // import "draft-js/dist/Draft.css";
 
@@ -23,7 +24,7 @@ class InspectionCreate extends Component {
   };
 
   getFacilityDropdown = () => {
-    fetch(`http://localhost:3000/facility/`, {
+    fetch(`${APIURL}/facility/`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -38,7 +39,7 @@ class InspectionCreate extends Component {
 
   fetchPostInspection = (fields) => {
     // console.log(this.props, "from InspectionCreate");
-    fetch(`http://localhost:3000/inspectionreports/create`, {
+    fetch(`${APIURL}/inspectionreports/create`, {
       method: "POST",
       body: JSON.stringify({
         inspectionreports: {

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import FacilityCreate from "./FacilityCreate";
 import FacilityPDF from "./facilityPDF";
+import APIURL from "../../helpers/environment";
 class FacilityTable extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +48,7 @@ class FacilityTable extends Component {
   };
 
   deleteFacility = (facility) => {
-    fetch(`http://localhost:3000/facility/delete/${facility.id}`, {
+    fetch(`${APIURL}/facility/delete/${facility.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",
